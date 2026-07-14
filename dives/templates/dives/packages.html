@@ -1,0 +1,53 @@
+{% extends "dives/base.html" %}
+
+{% block title %}Packages | Marlinos Diventures{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <p class="section-eyebrow">Travel Packages</p>
+  <h1 class="section-title">Plan your next scuba expedition.</h1>
+  <p class="section-sub">All packages include professional guides, equipment support, and dive planning. Choose the level that suits your trip.</p>
+</section>
+
+<section>
+  <div class="pkg-grid">
+    <article class="pkg-card">
+      <h3>Intro Dive Escape</h3>
+      <p class="pkg-loc">Agatti · Bangaram · Kalpeni</p>
+      <p>Perfect for first-timers who want a calm and guided introduction to Lakshadweep scuba diving.</p>
+      <ul class="pkg-features">
+        <li>1-day beginner package</li>
+        <li>2 guided dives</li>
+        <li>Instructor and gear support</li>
+      </ul>
+      <div class="pkg-price"><span class="amount">5500/-</span><span class="per">/ person</span></div>
+      <a href="{% url 'booking' %}" class="pkg-book premium-cta">Reserve Your Spot</a>
+    </article>
+    <article class="pkg-card featured">
+      <div class="pkg-badge">Most Popular</div>
+      <h3>Reef Explorer</h3>
+      <p class="pkg-loc">Bangaram · Kadmat · Minicoy</p>
+      <p>A premium island package for certified divers seeking reef-rich sites and easy island logistics.</p>
+      <ul class="pkg-features">
+        <li>3-day diving itinerary</li>
+        <li>Up to 4 dives daily</li>
+        <li>Boat transfers and dive guide</li>
+      </ul>
+      <div class="pkg-price"><span class="amount">12000/-</span><span class="per">/ person</span></div>
+      <a href="{% url 'booking' %}" class="pkg-book premium-cta">Reserve Your Spot</a>
+    </article>
+    <article class="pkg-card">
+      <h3>Island Adventure</h3>
+      <p class="pkg-loc">Agatti · Kadmat · Minicoy</p>
+      <p>Extended Lakshadweep diving with reef exploration, night dives, and premium island arrangements.</p>
+      <ul class="pkg-features">
+        <li>5-day expert-led trip</li>
+        <li>Night dive option available</li>
+        <li>Stay, transfers, and planning included</li>
+      </ul>
+      <div class="pkg-price"><span class="amount">18000/-</span><span class="per">/ person</span></div>
+      <a href="{% url 'booking' %}" class="pkg-book premium-cta">Reserve Your Spot</a>
+    </article>
+  </div>
+</section>
+{% endblock %}

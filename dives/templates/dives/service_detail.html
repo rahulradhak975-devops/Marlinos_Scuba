@@ -1,0 +1,35 @@
+{% extends "dives/base.html" %}
+
+{% block title %}{{ title }} | Marlinos Diventures{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="hero-content reveal">
+    <p class="hero-eyebrow">{{ eyebrow }}</p>
+    <h1 class="hero-h1">{{ title }}</h1>
+    <p class="hero-sub">{{ intro }}</p>
+    <div class="hero-actions">
+      <a href="{% url 'services' %}" class="btn-outline">Back to Services</a>
+      <a href="{% url 'booking' %}" class="btn-primary premium-cta">Book a Dive</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="service-detail-layout reveal">
+    <div class="service-detail-media" style="background-image: url('{{ image_url }}');"></div>
+    <div class="service-detail-copy">
+      <h2 class="section-title">{{ headline }}</h2>
+      <p class="section-sub">{{ body }}</p>
+      <div class="service-detail-list">
+        {% for item in highlights %}
+          <div class="service-detail-item">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.text }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

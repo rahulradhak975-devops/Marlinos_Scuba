@@ -1,0 +1,60 @@
+{% extends "dives/base.html" %}
+
+{% block title %}About Us | Marlinos Diventures{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="hero-content reveal">
+    <p class="hero-eyebrow">About Marlinos Diventures</p>
+    <h1 class="hero-h1">We blend precision training with unforgettable ocean journeys.</h1>
+    <p class="hero-sub">Founded by divers who love the ocean, our team builds every trip around safety, skilled instruction, and inspiring marine experiences.</p>
+    <div class="hero-actions">
+      <a href="{% url 'services' %}" class="btn-primary premium-cta">View Services</a>
+      <a href="{% url 'contact' %}" class="btn-outline">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="page-headline reveal">
+    <p class="section-eyebrow">Our mission</p>
+    <h2 class="section-title">Create safer, more soulful scuba journeys worldwide.</h2>
+    <p class="section-sub">From beginner certifications to remote liveaboards, every dive is supported by modern safety systems, personalized planning, and expert guides.</p>
+  </div>
+
+  <div class="detail-grid reveal">
+    <article class="detail-card">
+      <span class="exp-tag">Legacy</span>
+      <h3>20+ years of dive leadership</h3>
+      <p>Our instructors have launched training programmes across Asia, the Red Sea, and the Pacific for recreational and technical divers.</p>
+    </article>
+    <article class="detail-card">
+      <span class="exp-tag">Standards</span>
+      <h3>Safety-first instruction</h3>
+      <p>Every dive plan includes redundant checks, certified guides, and strict buddy protocols for confident underwater experiences.</p>
+    </article>
+    <article class="detail-card">
+      <span class="exp-tag">Community</span>
+      <h3>Trusted by divers worldwide</h3>
+      <p>From first-time guests to advanced explorers, our travellers return again and again for polished service and memorable marine encounters.</p>
+    </article>
+  </div>
+</section>
+
+<section>
+  <div class="metrics-grid reveal">
+    <div class="metric">
+      <h3>12K+</h3>
+      <p>Dives completed</p>
+    </div>
+    <div class="metric">
+      <h3>40+</h3>
+      <p>Destinations served</p>
+    </div>
+    <div class="metric">
+      <h3>98%</h3>
+      <p>Guest satisfaction</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

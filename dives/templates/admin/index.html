@@ -1,0 +1,35 @@
+{% extends 'admin/index.html' %}
+
+{% block content %}
+<div id="content-main">
+  <div class="module">
+    <table style="width:100%; border-collapse:collapse;">
+      <thead>
+        <tr>
+          <th style="text-align:left; padding:8px;">Metric</th>
+          <th style="text-align:left; padding:8px;">Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:8px;">Enquiries</td>
+          <td style="padding:8px;">{{ enquiry_count }}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px;">Website visits</td>
+          <td style="padding:8px;">{{ visit_count }}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px;">Today enquiries</td>
+          <td style="padding:8px;">{{ today_enquiries }}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px;">Today visits</td>
+          <td style="padding:8px;">{{ today_visits }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{{ block.super }}
+{% endblock %}

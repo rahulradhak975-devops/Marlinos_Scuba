@@ -1,0 +1,92 @@
+{% extends "dives/base.html" %}
+{% load static %}
+
+{% block title %}Services | Marlinos Diventures{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="hero-content reveal">
+    <p class="hero-eyebrow">Signature services</p>
+    <h1 class="hero-h1">Elevated dive services crafted for comfort, confidence, and discovery.</h1>
+    <p class="hero-sub">From elite instruction and premium equipment to seamless travel planning, every detail is arranged with precision so your underwater experience feels effortless and extraordinary.</p>
+    <div class="hero-actions">
+      <a href="{% url 'booking' %}" class="btn-primary premium-cta">Reserve Your Experience</a>
+      <a href="{% url 'faq' %}" class="btn-outline">Explore FAQs</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="page-headline reveal">
+    <p class="section-eyebrow">Premium care</p>
+    <h2 class="section-title">Luxury-level support designed around every dive journey.</h2>
+    <p class="section-sub">Whether you are earning your certification, planning a remote expedition, or returning for another unforgettable descent, our team ensures every moment feels polished, safe, and seamless.</p>
+  </div>
+
+  <div class="service-segments reveal">
+    <article class="service-segment">
+      <div class="service-media" style="background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80');"></div>
+      <div class="service-copy">
+        <span class="exp-tag">Training</span>
+        <h3>Training & Certification</h3>
+        <p>Modern scuba education now blends digital learning, live coaching, and performance-based skill review. Our programs keep pace with the latest PADI, SSI, and industry training standards.</p>
+        <ul>
+          <li>e-learning and pre-course preparation</li>
+          <li>Open Water, Advanced, and specialty pathways</li>
+          <li>Dive computer orientation and safety briefings</li>
+        </ul>
+        <a href="{% url 'service_detail' slug='training' %}" class="service-link">View Training Details</a>
+        <p class="service-note">Current trend: more flexible, tech-supported learning with deeper emphasis on safety and confidence.</p>
+      </div>
+    </article>
+
+    <article class="service-segment">
+      <div class="service-media" style="background-image: url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80');"></div>
+      <div class="service-copy">
+        <span class="exp-tag">Travel</span>
+        <h3>Travel & Expedition Planning</h3>
+        <p>We design itineraries with the same care as a luxury travel concierge, pairing premier marine destinations with real-time planning, weather awareness, and responsible travel values.</p>
+        <ul>
+          <li>Liveaboard and island-hopping experiences</li>
+          <li>Luxury transfers and seamless logistics</li>
+          <li>Eco-conscious trip planning and marine protection guidance</li>
+        </ul>
+        <a href="{% url 'service_detail' slug='travel' %}" class="service-link">View Travel Details</a>
+        <p class="service-note">Current trend: premium diving travel now focuses on sustainability, comfort, and smarter route planning.</p>
+      </div>
+    </article>
+
+    <article class="service-segment">
+      <div class="service-media" style="background-image: url('{% static 'dives/Equipment.jpg' %}');"></div>
+      <div class="service-copy">
+        <span class="exp-tag">Gear</span>
+        <h3>Premium Gear & Equipment</h3>
+        <p>Our equipment offering reflects the latest scuba industry developments, including smart dive computers, streamlined configurations, and high-performance rentals built for comfort and reliability.</p>
+        <ul>
+          <li>Premium rental sets with modern BCD and regulator systems</li>
+          <li>Digital dive computers and nitrox-ready support</li>
+          <li>Thermal protection and lightweight setups for tropical and blue-water diving</li>
+        </ul>
+        <a href="{% url 'service_detail' slug='gear' %}" class="service-link">View Gear Details</a>
+        <p class="service-note">Current trend: divers expect lighter, smarter gear with stronger comfort and data-driven performance.</p>
+      </div>
+    </article>
+
+    <article class="service-segment">
+      <div class="service-media" style="background-image: url('https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80');"></div>
+      <div class="service-copy">
+        <span class="exp-tag">Support</span>
+        <h3>Safety & Surface Support</h3>
+        <p>Behind every smooth dive is attentive support. We offer dependable surface coordination, rescue readiness, and professional care so your experience feels calm from the first briefing to the final ascent.</p>
+        <ul>
+          <li>Rescue-ready guides and on-water assistance</li>
+          <li>Emergency oxygen and first-aid preparedness</li>
+          <li>Clear communication, weather updates, and dive-day logistics</li>
+        </ul>
+        <a href="{% url 'service_detail' slug='support' %}" class="service-link">View Support Details</a>
+        <p class="service-note">Current trend: premium operators emphasize proactive safety, communication, and guest reassurance.</p>
+      </div>
+    </article>
+  </div>
+</section>
+{% endblock %}

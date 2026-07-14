@@ -1,0 +1,62 @@
+:root {
+  --admin-midnight: #050E1A;
+  --admin-deep: #081828;
+  --admin-teal: #00C9B1;
+  --admin-seafoam: #7FFFD4;
+  --admin-sand: #E8D5B7;
+  --admin-white: #FFFFFF;
+}
+
+body {
+  background: linear-gradient(135deg, var(--admin-midnight), var(--admin-deep)) !important;
+  color: var(--admin-white) !important;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+#header {
+  background: linear-gradient(90deg, var(--admin-midnight), var(--admin-deep)) !important;
+  border-bottom: 1px solid rgba(127, 255, 212, 0.25) !important;
+}
+
+#branding h1, #branding a, #user-tools a, #user-tools button, .breadcrumbs a, .breadcrumbs span {
+  color: var(--admin-seafoam) !important;
+}
+
+.module, .module.aligned, .module.collapse {
+  background: rgba(8, 24, 40, 0.95) !important;
+  border: 1px solid rgba(127, 255, 212, 0.2) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24) !important;
+}
+
+.module caption, .module h2, .module h3, .dashboard .module table th, .inline-group h2 {
+  color: var(--admin-teal) !important;
+}
+
+.module table td, .module table th, .module table tr {
+  border-color: rgba(127, 255, 212, 0.16) !important;
+}
+
+a:link, a:visited {
+  color: var(--admin-seafoam) !important;
+}
+
+.button, input[type="submit"], input[type="button"], .submit-row input, .button.default {
+  background: var(--admin-teal) !important;
+  color: var(--admin-midnight) !important;
+  border: none !important;
+  border-radius: 999px !important;
+}
+
+.button:hover, input[type="submit"]:hover, .button.default:hover {
+  background: var(--admin-seafoam) !important;
+}
+
+.login {
+  background: linear-gradient(135deg, var(--admin-midnight), var(--admin-deep)) !important;
+}
+
+.login .login-form, .login #content {
+  background: rgba(8, 24, 40, 0.95) !important;
+  border: 1px solid rgba(127, 255, 212, 0.2) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24) !important;
+}

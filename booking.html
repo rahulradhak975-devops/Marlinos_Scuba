@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Dive | Marlinos Diventures</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="Scuba.css?v=4" />
+</head>
+
+<body>
+  <nav id="navbar" class="scrolled">
+    <a href="Scuba.html" class="nav-logo">Marlinos<span>Diventures</span></a>
+    <div class="nav-links"><a href="Scuba.html#experiences">Experiences</a><a href="Scuba.html#packages">Packages</a><a
+        href="Scuba.html#sites">Dive Sites</a><a href="Scuba.html#testimonials">Stories</a><a href="booking.html"
+        class="nav-cta">Book a Dive</a></div>
+  </nav>
+  <main class="page-shell">
+    <section class="page-hero">
+      <p class="section-eyebrow">Instant Booking</p>
+      <h1 class="section-title">Reserve your dive with WhatsApp.</h1>
+      <p class="section-sub">Send your preferred date, package, and requirements.</p>
+    </section>
+    <section class="booking-panel">
+      <div class="booking-panel-inner">
+        <div class="booking-panel-header">
+          <p class="section-eyebrow">Booking form</p>
+          <h3>Tell us your dive plan</h3>
+          <p class="booking-panel-sub">We will use this information to prepare a WhatsApp booking message.</p>
+        </div>
+        <form id="bookingForm">
+          <input type="text" id="name" placeholder="Your Name" required>
+          <input type="email" id="email" placeholder="Email Address" required>
+          <input type="tel" id="phone" placeholder="Phone Number" required>
+          <select id="package" required>
+            <option value="">Select Package</option>
+            <option value="Discovery">Discovery</option>
+            <option value="Explorer">Explorer</option>
+            <option value="Expedition">Expedition</option>
+          </select>
+          <input type="date" id="date" required>
+          <textarea id="message" rows="4" placeholder="Additional requirements"></textarea>
+          <button class="btn-primary premium-cta" type="submit">Book via WhatsApp</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <script>
+    const bookingForm = document.getElementById("bookingForm");
+    if (bookingForm) {
+      bookingForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const whatsappMessage = `New Dive Booking Request
+
+Name: ${document.getElementById("name").value}
+Email: ${document.getElementById("email").value}
+Phone: ${document.getElementById("phone").value}
+Package: ${document.getElementById("package").value}
+Preferred Date: ${document.getElementById("date").value}
+
+Additional Requirements:
+${document.getElementById("message").value}`;
+        window.open(`https://wa.me/918891454631?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
+      });
+    }
+  </script>
+</body>
+
+</html>

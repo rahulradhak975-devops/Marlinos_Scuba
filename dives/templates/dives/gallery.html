@@ -1,0 +1,61 @@
+{% extends "dives/base.html" %}
+
+{% block title %}Gallery | Marlinos Diventures{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="hero-content reveal">
+    <p class="hero-eyebrow">Lakshadweep Island Scuba Diving Center</p>
+    <h1 class="hero-h1">A vibrant gallery of reef adventures, island views, and unforgettable underwater moments.</h1>
+    <p class="hero-sub">From crystal-clear lagoons and coral gardens to snorkel escapes and sunset beach evenings, every image celebrates the magic of diving in Lakshadweep.</p>
+  </div>
+</section>
+
+<section>
+  <div class="gallery-grid reveal">
+    <article class="gallery-card" role="button" tabindex="0" data-image="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=80" data-title="Scuba Adventure" data-caption="Professional divers exploring the clear blue waters of Lakshadweep.">
+      <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=80" alt="Scuba Adventure" loading="lazy">
+      <div><h3>Scuba Adventure</h3><p>Professional divers exploring the clear blue waters of Lakshadweep.</p></div>
+    </article>
+    <article class="gallery-card" role="button" tabindex="0" data-image="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=900" data-title="Coral Garden Escape" data-caption="Colourful reefs and marine life thriving beneath the surface.">
+      <img src="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Coral Garden Escape" loading="lazy">
+      <div><h3>Coral Garden Escape</h3><p>Colourful reefs and marine life thriving beneath the surface.</p></div>
+    </article>
+    <article class="gallery-card" role="button" tabindex="0" data-image="https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=900" data-title="Island Beach Fun" data-caption="Sun-soaked moments after a dive with turquoise shorelines nearby.">
+      <img src="https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Island Beach Fun" loading="lazy">
+      <div><h3>Island Beach Fun</h3><p>Sun-soaked moments after a dive with turquoise shorelines nearby.</p></div>
+    </article>
+    <article class="gallery-card" role="button" tabindex="0" data-image="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=900" data-title="Boat Ride to the Dive Point" data-caption="Exciting transfers across the lagoon to your next underwater adventure.">
+      <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Boat Ride to the Dive Point" loading="lazy">
+      <div><h3>Boat Ride to the Dive Point</h3><p>Exciting transfers across the lagoon to your next underwater adventure.</p></div>
+    </article>
+    <article class="gallery-card" role="button" tabindex="0" data-image="https://images.pexels.com/photos/462024/pexels-photo-462024.jpeg?auto=compress&cs=tinysrgb&w=900" data-title="Island Horizon" data-caption="Panoramic views of the serene Lakshadweep coastline and sea.">
+      <img src="https://images.pexels.com/photos/462024/pexels-photo-462024.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Island Horizon" loading="lazy">
+      <div><h3>Island Horizon</h3><p>Panoramic views of the serene Lakshadweep coastline and sea.</p></div>
+    </article>
+    <article class="gallery-card" role="button" tabindex="0" data-image="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=900" data-title="Sunset After Dive" data-caption="Golden evening skies that make every weeknight feel cinematic.">
+      <img src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Sunset After Dive" loading="lazy">
+      <div><h3>Sunset After Dive</h3><p>Golden evening skies that make every weeknight feel cinematic.</p></div>
+    </article>
+    <article class="gallery-card" role="button" tabindex="0" data-image="https://images.pexels.com/photos/1174732/pexels-photo-1174732.jpeg?auto=compress&cs=tinysrgb&w=900" data-title="Dive Center Activity" data-caption="Daily scuba center moments and island adventure experiences.">
+      <img src="https://images.pexels.com/photos/1174732/pexels-photo-1174732.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Dive Center Activity" loading="lazy">
+      <div><h3>Dive Center Activity</h3><p>Daily scuba center moments and island adventure experiences.</p></div>
+    </article>
+    <article class="gallery-card" role="button" tabindex="0" data-image="https://images.pexels.com/photos/792416/pexels-photo-792416.jpeg?auto=compress&cs=tinysrgb&w=900" data-title="Resort & Recreation" data-caption="Relaxing island evenings with ocean views and warm hospitality.">
+      <img src="https://images.pexels.com/photos/792416/pexels-photo-792416.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Resort & Recreation" loading="lazy">
+      <div><h3>Resort & Recreation</h3><p>Relaxing island evenings with ocean views and warm hospitality.</p></div>
+    </article>
+  </div>
+</section>
+
+<div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true">
+  <div class="gallery-lightbox__panel" role="dialog" aria-modal="true" aria-label="Gallery preview">
+    <button class="gallery-lightbox__close" id="galleryLightboxClose" type="button" aria-label="Close preview">×</button>
+    <div class="gallery-lightbox__image" id="galleryLightboxImage"></div>
+    <div class="gallery-lightbox__content">
+      <h3 id="galleryLightboxTitle"></h3>
+      <p id="galleryLightboxCaption"></p>
+    </div>
+  </div>
+</div>
+{% endblock %}

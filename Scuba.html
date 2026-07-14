@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marlinos Diventures. — Explore the Deep</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Legacy Page Stylesheet -->
+  <link rel="stylesheet" href="Scuba.css?v=4" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       LOADER
+  ══════════════════════════════════════════ -->
+  <div id="loader">
+    <div id="bubbles-loader"></div>
+    <div class="loader-logo">Marlinos Diventures.</div>
+    <div>
+      <div class="depth-gauge">
+        <div class="gauge-marks">
+          <div class="gauge-mark"></div>
+          <div class="gauge-mark"></div>
+          <div class="gauge-mark"></div>
+          <div class="gauge-mark"></div>
+          <div class="gauge-mark"></div>
+        </div>
+      </div>
+      <div class="depth-label" style="margin-top: 10px;">Depth</div>
+    </div>
+    <div class="loader-depth-num" id="loaderNum">0 <span>m</span></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════════ -->
+  <nav id="navbar">
+    <a href="Scuba.html" class="nav-logo">Marlinos<span>Diventures</span></a>
+    <div class="nav-links">
+      <a href="#experiences">Experiences</a>
+      <a href="#packages">Packages</a>
+      <a href="#sites">Dive Sites</a>
+      <a href="#testimonials">Stories</a>
+      <a href="booking.html" class="nav-cta">Book a Dive</a>
+    </div>
+    <div class="nav-hamburger" onclick="this.classList.toggle('open')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+
+  <section id="hero">
+    <video id="hero-video" class="hero-video" autoplay muted loop playsinline>
+      <source src="scuba2.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="shaft" style="left: 20%; animation-delay: -2s; opacity: 0.7;"></div>
+    <div class="shaft" style="left: 40%; animation-delay: -4s;"></div>
+    <div class="shaft" style="left: 60%; animation-delay: -1s; opacity: 0.8;"></div>
+    <div class="shaft" style="left: 78%; animation-delay: -3s; opacity: 0.6;"></div>
+    <div id="hero-bubbles"></div>
+    <div class="coral-silhouette"></div>
+    <div class="ocean-floor"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">✦ PADI Certified · Est. 2004 · 40+ Destinations</p>
+      <h3 class="hero-h1">Where the Ocean<br>Becomes <em>Your World</em></h3>
+      <p class="hero-sub">
+        Guided liveaboard expeditions, open water certification, and curated dive travel
+        for every depth of experience — from your first breath underwater to your hundredth wreck.
+      </p>
+      <div class="hero-actions">
+        <a href="#packages" class="btn-primary">Explore Packages</a>
+        <a href="#experiences" class="btn-outline">Our Experiences</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count="12000">0</div>
+        <div class="hero-stat-label">Dives Completed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count="40">0</div>
+        <div class="hero-stat-label">Destinations</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count="98">0</div>
+        <div class="hero-stat-label">% Satisfaction</div>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      Scroll to Dive
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       EXPERIENCES
+  ══════════════════════════════════════════ -->
+  <section id="experiences">
+    <div class="reveal">
+      <p class="section-eyebrow">What We Offer</p>
+      <h2 class="section-title">Choose Your Adventure</h2>
+      <p class="section-sub">From serene reef snorkelling to night dives with bioluminescent plankton — we design every experience around your comfort and curiosity.</p>
+    </div>
+    <div class="exp-grid reveal">
+      <div class="exp-card">
+        <div class="exp-card-bg" style="background: linear-gradient(135deg, #0a3a5c, #051d2e); background-image: radial-gradient(ellipse at 50% 80%, rgba(0,201,177,0.2), transparent 60%);"></div>
+        <div class="exp-card-overlay"></div>
+        <div class="exp-card-body">
+          <span class="exp-tag">Beginner</span>
+          <h3>Open Water Certification</h3>
+          <p>Your first underwater breath, guided by PADI professionals. Four days to a lifetime of freedom beneath the waves.</p>
+          <div class="exp-card-arrow">Learn More →</div>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-bg" style="background: linear-gradient(135deg, #062a1e, #031a14); background-image: radial-gradient(ellipse at 50% 80%, rgba(0,180,140,0.25), transparent 60%);"></div>
+        <div class="exp-card-overlay"></div>
+        <div class="exp-card-body">
+          <span class="exp-tag">Advanced</span>
+          <h3>Deep Reef Expeditions</h3>
+          <p>Descend past 30 metres into vibrant reef walls teeming with pelagic life. Drift dives, coral gardens, and manta encounters.</p>
+          <div class="exp-card-arrow">Learn More →</div>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-bg" style="background: linear-gradient(135deg, #1a1a0a, #0e0e04); background-image: radial-gradient(ellipse at 50% 80%, rgba(100,180,80,0.15), transparent 60%);"></div>
+        <div class="exp-card-overlay"></div>
+        <div class="exp-card-body">
+          <span class="exp-tag">Specialty</span>
+          <h3>Wreck Diving</h3>
+          <p>Explore WWII battleships, sunken freighters, and aircraft — each a silent monument to history, now claimed by the sea.</p>
+          <div class="exp-card-arrow">Learn More →</div>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-bg" style="background: linear-gradient(135deg, #150a2e, #0a0520); background-image: radial-gradient(ellipse at 50% 80%, rgba(100,60,200,0.2), transparent 60%);"></div>
+        <div class="exp-card-overlay"></div>
+        <div class="exp-card-body">
+          <span class="exp-tag">Signature</span>
+          <h3>Bioluminescent Night Dives</h3>
+          <p>Switch off your torch and enter a galaxy underwater. Experience the ocean light itself in one of our most-requested dives.</p>
+          <div class="exp-card-arrow">Learn More →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PACKAGES
+  ══════════════════════════════════════════ -->
+  <section id="packages">
+    <div class="pkg-header reveal">
+      <div>
+        <p class="section-eyebrow">Travel Packages</p>
+        <h2 class="section-title">Plan Your Expedition</h2>
+      </div>
+      <p class="section-sub" style="max-width: 320px;">All packages include professional guides, equipment, and full safety support. Airfare not included.</p>
+    </div>
+    <div class="pkg-grid">
+      <div class="pkg-card reveal">
+        <div class="pkg-icon">🤿</div>
+        <h3>Discovery</h3>
+        <p class="pkg-loc">📍 Maldives · Bali · Phuket</p>
+        <p>Perfect for first-timers stepping into their first scuba experience. Shallow reef dives, daily briefings, and dedicated instructors.</p>
+        <ul class="pkg-features">
+          <li>5-day guided reef programme</li>
+          <li>All equipment provided</li>
+          <li>PADI Discover Scuba certificate</li>
+          <li>2 boat dives daily</li>
+        </ul>
+        <div class="pkg-price">
+          <span class="amount">15000/-</span>
+          <span class="per">/ person</span>
+        </div>
+        <a href="#" class="pkg-book">Reserve Your Spot</a>
+      </div>
+      <div class="pkg-card featured reveal" style="transition-delay: 0.1s;">
+        <div class="pkg-badge">Most Popular</div>
+        <div class="pkg-icon">🐠</div>
+        <h3>Explorer</h3>
+        <p class="pkg-loc">📍 Raja Ampat · Komodo · Sulawesi</p>
+        <p>A week-long liveaboard through Indonesia's Coral Triangle — the most biodiverse marine region on Earth. Up to 4 dives daily.</p>
+        <ul class="pkg-features">
+          <li>7-night liveaboard vessel</li>
+          <li>Up to 4 dives per day</li>
+          <li>PADI Advanced cert eligible</li>
+          <li>Manta &amp; shark encounters</li>
+          <li>Underwater photography brief</li>
+        </ul>
+        <div class="pkg-price">
+          <span class="amount">20000/-</span>
+          <span class="per">/ person</span>
+        </div>
+        <a href="#" class="pkg-book">Reserve Your Spot</a>
+      </div>
+      <div class="pkg-card reveal" style="transition-delay: 0.2s;">
+        <div class="pkg-icon">⚓</div>
+        <h3>Expedition</h3>
+        <p class="pkg-loc">📍 Red Sea · Cocos Island · Palau</p>
+        <p>For certified divers seeking the ultimate experience — deep drift dives, technical wreck penetration, and remote atoll exploration.</p>
+        <ul class="pkg-features">
+          <li>10-day expert-led programme</li>
+          <li>Night dives included</li>
+          <li>Wreck &amp; cave specialty dives</li>
+          <li>Nitrox fills available</li>
+          <li>Videography package included</li>
+        </ul>
+        <div class="pkg-price">
+          <span class="amount">25000/-</span>
+          <span class="per">/ person</span>
+        </div>
+        <a href="#" class="pkg-book">Reserve Your Spot</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       DIVE SITES
+  ══════════════════════════════════════════ -->
+  <section id="sites">
+    <div class="reveal">
+      <p class="section-eyebrow">Our Locations</p>
+      <h2 class="section-title">World-Class Dive Sites</h2>
+    </div>
+    <div class="sites-layout reveal">
+      <div class="site-list">
+        <div class="site-item active" data-img="https://images.unsplash.com/photo-1525088553742-34a913b8ff96?auto=format&fit=crop&w=1200&q=80" onclick="selectSite(this,'Raja Ampat, Indonesia','The undisputed coral capital of the world. With over 1,500 fish species and 600 coral types, every dive here feels like the ocean\'s greatest gallery.','5–40m','🐡')">
+          <div class="site-thumb" style="background-image: url('https://images.unsplash.com/photo-1525088553742-34a913b8ff96?auto=format&fit=crop&w=600&q=80');"></div>
+          <div>
+            <h4>Raja Ampat, Indonesia</h4>
+            <div class="site-meta">Coral Triangle · Year-round</div>
+            <span class="site-depth">Max depth: 40m</span>
+          </div>
+        </div>
+        <div class="site-item" data-img="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" onclick="selectSite(this,'Blue Hole, Dahab','Egypt\'s most iconic dive — a vertical cathedral descending 130 metres through electric-blue water. Awe-inspiring for recreational and technical divers alike.','5–130m','🔵')">
+          <div class="site-thumb" style="background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80');"></div>
+          <div>
+            <h4>Blue Hole, Dahab</h4>
+            <div class="site-meta">Red Sea, Egypt · Oct–Apr</div>
+            <span class="site-depth">Max depth: 130m</span>
+          </div>
+        </div>
+        <div class="site-item" data-img="https://images.unsplash.com/photo-1527241114244-bfe197207404?auto=format&fit=crop&w=1200&q=80" onclick="selectSite(this,'Palau, Micronesia','Drift through jellyfish lakes, explore WWII wrecks, and watch hammerhead schools circle in open blue water. Palau belongs on every diver\'s bucket list.','10–65m','🦈')">
+          <div class="site-thumb" style="background-image: url('https://images.unsplash.com/photo-1527241114244-bfe197207404?auto=format&fit=crop&w=600&q=80');"></div>
+          <div>
+            <h4>Palau, Micronesia</h4>
+            <div class="site-meta">Pacific Ocean · Oct–Jun</div>
+            <span class="site-depth">Max depth: 65m</span>
+          </div>
+        </div>
+        <div class="site-item" data-img="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1200&q=80" onclick="selectSite(this,'Cocos Island, Costa Rica','The Galápagos of the deep. Schools of hammerheads, whale sharks, and manta rays gather here in extraordinary numbers in truly wild open ocean.','15–50m','🌊')">
+          <div class="site-thumb" style="background-image: url('https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=600&q=80');"></div>
+          <div>
+            <h4>Cocos Island, Costa Rica</h4>
+            <div class="site-meta">Pacific Coast · Jun–Nov</div>
+            <span class="site-depth">Max depth: 50m</span>
+          </div>
+        </div>
+        <div class="site-item" data-img="https://images.unsplash.com/photo-1519324237978-3edf4c6b5155?auto=format&fit=crop&w=1200&q=80" onclick="selectSite(this,'SS Thistlegorm, Red Sea','One of the world\'s greatest wreck dives — a WWII British cargo ship lying at 30m, its holds still filled with motorcycles, trucks, and wartime supplies.','15–30m','⚓')">
+          <div class="site-thumb" style="background-image: url('https://images.unsplash.com/photo-1519324237978-3edf4c6b5155?auto=format&fit=crop&w=600&q=80');"></div>
+          <div>
+            <h4>SS Thistlegorm, Red Sea</h4>
+            <div class="site-meta">Egypt · Sep–Nov</div>
+            <span class="site-depth">Max depth: 30m</span>
+          </div>
+        </div>
+      </div>
+      <div class="site-preview" id="sitePreview">
+        <div class="site-preview-image" id="siteImage" style="background-image: url('https://images.unsplash.com/photo-1525088553742-34a913b8ff96?auto=format&fit=crop&w=1200&q=80');"></div>
+        <div class="site-preview-glow"></div>
+        <div class="site-fish" id="siteFish">🐡</div>
+        <div class="site-preview-inner">
+          <h3 id="siteName">Raja Ampat, Indonesia</h3>
+          <p id="siteDesc">The undisputed coral capital of the world. With over 1,500 fish species and 600 coral types, every dive here feels like the ocean's greatest gallery.</p>
+          <div style="margin-top: 20px;">
+            <span class="exp-tag" id="siteDepth">Max depth: 5–40m</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       TESTIMONIALS
+  ══════════════════════════════════════════ -->
+  <section id="testimonials">
+    <div class="reveal">
+      <p class="section-eyebrow">Diver Stories</p>
+      <h2 class="section-title" style="max-width: none;">What Our Divers Say</h2>
+    </div>
+    <div class="testimonials-wrap">
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>"The Raja Ampat liveaboard changed how I see the ocean. The guides anticipated every question before I asked. Already booked trip two."</blockquote>
+        <div class="testi-author">Priya Nair</div>
+        <div class="testi-meta">Advanced Diver · Kerala, India</div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay: 0.1s;">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Started with zero experience. Got Open Water certified in four days. The instructors were patient, professional, and genuinely passionate."</blockquote>
+        <div class="testi-author">Marcus Webb</div>
+        <div class="testi-meta">Open Water Graduate · London, UK</div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay: 0.2s;">
+        <div class="stars">★★★★★</div>
+        <blockquote>"The Palau hammerhead dive is something I'll describe to my grandchildren. The night dive with bioluminescence — no words exist for it."</blockquote>
+        <div class="testi-author">Yuki Tanaka</div>
+        <div class="testi-meta">Expedition Diver · Tokyo, Japan</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       CERTIFICATIONS
+  ══════════════════════════════════════════ -->
+  <div id="certs">
+    <p class="section-eyebrow">Accreditations</p>
+    <div class="cert-logos">
+      <div class="cert-logo">PADI</div>
+      <div class="cert-divider"></div>
+      <div class="cert-logo">SSI</div>
+      <div class="cert-divider"></div>
+      <div class="cert-logo">NAUI</div>
+      <div class="cert-divider"></div>
+      <div class="cert-logo">DAN</div>
+      <div class="cert-divider"></div>
+      <div class="cert-logo">ISO 24801</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       CTA BANNER
+  ══════════════════════════════════════════ -->
+  <div id="cta-banner">
+    <h2 class="reveal">Ready to Descend?</h2>
+    <p class="reveal">The reef doesn't wait. Join thousands of divers who chose AbysSphere for the dive of their lives.</p>
+    <div class="hero-actions reveal">
+      <a href="#packages" class="btn-primary">Browse Packages</a>
+      <a href="mailto:hello@abyssphere.com" class="btn-outline">Contact Us</a>
+    </div>
+  </div>
+
+  <section class="booking-panel" id="booking">
+    <div class="booking-panel-inner">
+      <div class="booking-panel-header">
+        <p class="section-eyebrow">Instant booking</p>
+        <h3>Reserve your dive with WhatsApp</h3>
+        <p class="booking-panel-sub">Share your dates and preferences and our dive planner will confirm availability immediately.</p>
+      </div>
+      <form id="bookingForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Email Address" required>
+        <input type="tel" id="phone" placeholder="Phone Number" required>
+        <select id="package" required>
+          <option value="">Select Package</option>
+          <option value="Discovery">Discovery</option>
+          <option value="Explorer">Explorer</option>
+          <option value="Expedition">Expedition</option>
+        </select>
+        <input type="date" id="date" required>
+        <textarea id="message" rows="4" placeholder="Additional requirements"></textarea>
+        <button type="submit">Book via WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="nav-logo">Marlinos<span style="color: var(--teal);">Diventures</span></span>
+        <p>Professional scuba instruction, liveaboard expeditions, and dive travel since 2004. PADI-certified guides. Safety-first philosophy.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Experiences</h5>
+        <a href="#">Open Water Cert</a>
+        <a href="#">Advanced Diver</a>
+        <a href="#">Wreck Diving</a>
+        <a href="#">Night Dives</a>
+        <a href="#">Freediving</a>
+      </div>
+      <div class="footer-col">
+        <h5>Destinations</h5>
+        <a href="#">Indonesia</a>
+        <a href="#">Red Sea</a>
+        <a href="#">Micronesia</a>
+        <a href="#">Maldives</a>
+        <a href="#">Caribbean</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#">About Us</a>
+        <a href="#">Safety Standards</a>
+        <a href="#">Travel Insurance</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Marlinos Diventures. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="#">f</a>
+        <a href="#">in</a>
+        <a href="#">ig</a>
+        <a href="#">yt</a>
+      </div>
+    </div>
+  </footer>
+  
+  <a class="whatsapp-float" href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M380.9 97.1C339 55.3 283.6 32 224 32 100.3 32 0 132.3 0 256c0 45.1 11.7 89.1 33.9 127.6L0 480l101.2-32.1C141.2 455 181 464 224 464c123.7 0 224-100.3 224-224 0-59.6-23.3-115-67.1-142.9zM224 402.8c-36.7 0-72.4-9.5-103.8-27.5l-7.4-4.1-60.1 19 20.1-58.6-4-7.1C36.9 290 27.3 254.3 27.3 217.6 27.3 116.4 116.4 27.3 217.6 27.3 318.8 27.3 407.9 116.4 407.9 217.6 407.9 318.8 318.8 402.8 224 402.8zM335.4 302.4l-30.1-8.6c-4-1.1-8.3-.1-11.3 2.6l-17.1 14.3c-15.7-8.6-28.5-21.4-37.1-37l14.3-17.1c2.7-3 3.7-7.3 2.6-11.3l-8.6-30.1c-1.7-6-7.8-9.8-13.8-8.3l-42.9 12.2c-3.7 1-6.9 3.6-9.1 6.8-8.6 12.3-13 26.6-13 41.9 0 54.8 44.6 99.4 99.4 99.4 15.3 0 29.6-4.4 41.9-13 3.2-2.2 5.8-5.4 6.8-9.1l12.2-42.9c1.6-6.1-2.2-12.1-8.2-13.8z"/>
+    </svg>
+    <span>WhatsApp</span>
+  </a>
+
+  <script>
+    function openWhatsApp(message) {
+      const url = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
+
+    function attachWhatsAppButton() {
+      const waFloat = document.querySelector('.whatsapp-float');
+      if (!waFloat) return;
+      waFloat.addEventListener('click', () => {
+        openWhatsApp('Hi Marlinos Diventures, I would like to learn more about your dive packages and availability.');
+      });
+    }
+
+    attachWhatsAppButton();
+
+  /* ── LOADER BUBBLES ── */
+    const loader            = document.getElementById('loader');
+    const loaderBubblesCont = document.getElementById('bubbles-loader');
+    const loaderNum         = document.getElementById('loaderNum');
+
+    for (let i = 0; i < 18; i++) {
+      const b    = document.createElement('div');
+      b.className = 'lb';
+      const size = 4 + Math.random() * 14;
+      b.style.cssText = `
+        width: ${size}px;
+        height: ${size}px;
+        left: ${Math.random() * 100}%;
+        animation-duration: ${3 + Math.random() * 5}s;
+        animation-delay: ${Math.random() * 4}s;
+        opacity: ${0.3 + Math.random() * 0.5};
+      `;
+      loaderBubblesCont.appendChild(b);
+    }
+
+    /* ── DEPTH COUNTER ── */
+    let depth = 0;
+    const targetDepth   = 40;
+    const depthInterval = setInterval(() => {
+      depth += 1;
+      loaderNum.innerHTML = `${depth} <span>m</span>`;
+      if (depth >= targetDepth) clearInterval(depthInterval);
+    }, 60);
+
+    /* ── HIDE LOADER AFTER PAGE LOAD ── */
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        loader.classList.add('loader-done');
+        setTimeout(() => loader.style.display = 'none', 700);
+        startCounters();
+      }, 2800);
+    });
+
+    /* ── HERO BUBBLE SPAWN ── */
+    const heroBubblesCont = document.getElementById('hero-bubbles');
+
+    function spawnBubble() {
+      const b    = document.createElement('div');
+      b.className = 'bubble';
+      const size = 4 + Math.random() * 20;
+      b.style.cssText = `
+        width: ${size}px;
+        height: ${size}px;
+        left: ${Math.random() * 100}%;
+        animation-duration: ${7 + Math.random() * 10}s;
+        animation-delay: 0s;
+      `;
+      heroBubblesCont.appendChild(b);
+      setTimeout(() => b.remove(), 20000);
+    }
+
+    setInterval(spawnBubble, 500);
+    for (let i = 0; i < 12; i++) setTimeout(spawnBubble, i * 200);
+
+    /* ── STICKY NAVBAR ── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    /* ── SCROLL REVEAL ── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer  = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    /* ── STAT COUNTERS ── */
+    function startCounters() {
+      document.querySelectorAll('[data-count]').forEach(el => {
+        const target = parseInt(el.dataset.count);
+        const suffix = target === 98 ? '%' : '+';
+        let cur      = 0;
+        const step   = Math.ceil(target / 60);
+        const t      = setInterval(() => {
+          cur = Math.min(cur + step, target);
+          el.textContent = cur.toLocaleString() + suffix;
+          if (cur >= target) clearInterval(t);
+        }, 30);
+      });
+    }
+
+    /* ── DIVE SITE SELECTOR ── */
+    function selectSite(el, name, desc, depth, fish) {
+      document.querySelectorAll('.site-item').forEach(i => i.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('siteName').textContent = name;
+      document.getElementById('siteDesc').textContent = desc;
+      document.getElementById('siteDepth').textContent = 'Max depth: ' + depth;
+      document.getElementById('siteFish').textContent  = fish;
+      const imageEl = document.getElementById('siteImage');
+      const imageUrl = el.getAttribute('data-img');
+      if (imageUrl) imageEl.style.backgroundImage = `url('${imageUrl}')`;
+    }
+
+const bookingForm = document.getElementById("bookingForm");
+
+if (bookingForm) {
+  bookingForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const pkg = document.getElementById("package").value;
+    const date = document.getElementById("date").value;
+    const message = document.getElementById("message").value;
+
+    const whatsappMessage =
+`🌊 *New Dive Booking Request*
+
+👤 Name: ${name}
+📧 Email: ${email}
+📞 Phone: ${phone}
+🤿 Package: ${pkg}
+📅 Preferred Date: ${date}
+
+📝 Additional Requirements:
+${message}`;
+
+    const whatsappURL =
+`https://wa.me/919876543210?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(whatsappURL, "_blank");
+  });
+}
+
+    attachWhatsAppButton();
+  </script>
+</body>
+</html>

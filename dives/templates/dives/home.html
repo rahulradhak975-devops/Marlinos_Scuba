@@ -1,0 +1,344 @@
+﻿{% extends "dives/base.html" %}
+{% load static %}
+
+{% block title %}Marlinos Diventures | Home{% endblock %}
+
+{% block content %}
+<section class="page-hero" id="hero">
+  <div id="hero-video" class="hero-video" aria-hidden="true"></div>
+  <div class="shaft" style="left: 20%; animation-delay: -2s; opacity: 0.7;"></div>
+  <div class="shaft" style="left: 40%; animation-delay: -4s;"></div>
+  <div class="shaft" style="left: 60%; animation-delay: -1s; opacity: 0.8;"></div>
+  <div class="shaft" style="left: 78%; animation-delay: -3s; opacity: 0.6;"></div>
+  <div id="hero-bubbles"></div>
+  <div class="coral-silhouette"></div>
+  <div class="ocean-floor"></div>
+  <div class="hero-content reveal">
+    <p class="hero-eyebrow">PADI Certified · Est. 2004 · 40+ Destinations</p>
+    <h1 class="hero-h1">Where the ocean becomes <em>your world</em>.</h1>
+    <p class="hero-sub">Guided liveaboard expeditions, open water certification, and curated dive travel for every depth of experience.</p>
+    <div class="hero-actions">
+      <a href="{% url 'booking' %}" class="btn-primary premium-cta">Book a Package</a>
+      <a href="{% url 'experiences' %}" class="btn-outline">Our Experiences</a>
+    </div>
+  </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll to Dive
+  </div>
+</section>
+
+<section class="offers-showcase">
+  <div class="offer-bubbles" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="offers-shell">
+    <div class="page-headline offer-intro reveal">
+      <div>
+        <p class="section-eyebrow">What We Offer</p>
+        <h2 class="section-title">Dive experiences designed around safety and adventure.</h2>
+        <p class="section-sub">From first-time certifications to remote liveaboard expeditions, every dive is supported by modern planning and premium guidance.</p>
+      </div>
+    </div>
+
+    <section id="experiences" class="offer-cards-section">
+      <div class="detail-grid reveal offers-grid">
+        <article class="detail-card offer-card">
+          <div class="offer-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3c3 4 6 7 6 11a6 6 0 1 1-12 0c0-4 3-7 6-11Z"></path>
+              <path d="M10 10c1.2 1.2 2.8 1.2 4 0"></path>
+            </svg>
+          </div>
+          <span class="exp-tag">Beginner</span>
+          <h3>Open Water Certification</h3>
+          <p>Four days of shore and ocean training with patient instruction from start to finish.</p>
+          <ul>
+            <li>PADI-aligned training</li>
+            <li>All gear provided</li>
+            <li>Small groups, calm pace</li>
+          </ul>
+        </article>
+        <article class="detail-card offer-card">
+          <div class="offer-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 15c2.5-3.5 5-5 8-5s5.5 1.5 8 5"></path>
+              <path d="M6 18c2.2-2.2 4.2-3.2 6-3.2s3.8 1 6 3.2"></path>
+              <path d="M10 7h4"></path>
+              <path d="M12 5v4"></path>
+            </svg>
+          </div>
+          <span class="exp-tag">Advanced</span>
+          <h3>Deep Reef Expeditions</h3>
+          <p>Drift through healthy reef walls with experienced guides and marine-life briefings.</p>
+          <ul>
+            <li>Certified divers only</li>
+            <li>Boat dives included</li>
+            <li>Night dive options</li>
+          </ul>
+        </article>
+        <article class="detail-card offer-card">
+          <div class="offer-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3v4"></path>
+              <path d="M12 17v4"></path>
+              <path d="M6 7c2.5 1 4.5 1 6 0s3.5-1 6 0"></path>
+              <path d="M6 17c2.5-1 4.5-1 6 0s3.5 1 6 0"></path>
+              <path d="M7 10c1.8 1.2 3.2 1.2 5 0"></path>
+              <path d="M12 10c1.8 1.2 3.2 1.2 5 0"></path>
+            </svg>
+          </div>
+          <span class="exp-tag">Specialty</span>
+          <h3>Wreck & Night Dives</h3>
+          <p>Historic wreck exploration and bioluminescent night adventures with top-level safety support.</p>
+          <ul>
+            <li>Guided wreck routes</li>
+            <li>Torch and line protocols</li>
+            <li>Small, experienced groups</li>
+          </ul>
+        </article>
+        <article class="detail-card offer-card">
+          <div class="offer-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 16c2.5-2.8 5.5-4.2 9-4.2s6.5 1.4 9 4.2"></path>
+              <path d="M6 20c1.7-1.4 3.3-2.1 6-2.1s4.3.7 6 2.1"></path>
+              <path d="M12 5a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"></path>
+            </svg>
+          </div>
+          <span class="exp-tag">Signature</span>
+          <h3>Liveaboard Adventures</h3>
+          <p>Multi-day itineraries in iconic marine regions, with premium service and unforgettable dives.</p>
+          <ul>
+            <li>Comfortable cabins</li>
+            <li>4 dives per day</li>
+            <li>Guided marine briefings</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </div>
+</section>
+
+<section id="packages">
+  <div class="reveal">
+    <p class="section-eyebrow">Packages</p>
+    <h2 class="section-title">Flexible trips with expert planning.</h2>
+    <p class="section-sub">From short reef weekends to intensive expedition journeys, each package includes equipment, support, and dive safety protocols built in.</p>
+  </div>
+  <div class="card-grid reveal">
+    <article class="pkg-card">
+      <div class="pkg-icon">🤿</div>
+      <h3>Intro Dive Escape</h3>
+      <p class="pkg-loc">Agatti · Bangaram · Kalpeni</p>
+      <p>Perfect for first-time divers and travellers who want a gentle introduction to Lakshadweep reef diving.</p>
+      <ul class="pkg-features">
+        <li>1-day beginner programme</li>
+        <li>2 guided dives</li>
+        <li>Equipment and instructor support</li>
+      </ul>
+      <div class="pkg-price"><span class="amount">5500/-</span><span class="per">/ person</span></div>
+      <a href="{% url 'booking' %}" class="pkg-book premium-cta">Reserve Your Spot</a>
+    </article>
+    <article class="pkg-card featured">
+      <div class="pkg-badge">Top Seller</div>
+      <div class="pkg-icon">🐠</div>
+      <h3>Reef Explorer</h3>
+      <p class="pkg-loc">Bangaram · Kadmat · Minicoy</p>
+      <p>A premium island package for certified divers seeking coral-rich reefs, calm lagoons, and marine-life encounters.</p>
+      <ul class="pkg-features">
+        <li>3-day island diving package</li>
+        <li>Up to 4 dives daily</li>
+        <li>Boat transfers and dive guide included</li>
+      </ul>
+      <div class="pkg-price"><span class="amount">12000/-</span><span class="per">/ person</span></div>
+      <a href="{% url 'booking' %}" class="pkg-book premium-cta">Reserve Your Spot</a>
+    </article>
+    <article class="pkg-card">
+      <div class="pkg-icon">⚓</div>
+      <h3>Island Adventure</h3>
+      <p class="pkg-loc">Agatti · Kadmat · Minicoy</p>
+      <p>Extended Lakshadweep diving with reef exploration, night dives, and premium island stay arrangements.</p>
+      <ul class="pkg-features">
+        <li>5-day premium itinerary</li>
+        <li>Night dive option available</li>
+        <li>Stay, transfers, and dive planning included</li>
+      </ul>
+      <div class="pkg-price"><span class="amount">18000/-</span><span class="per">/ person</span></div>
+      <a href="{% url 'booking' %}" class="pkg-book premium-cta">Reserve Your Spot</a>
+    </article>
+  </div>
+</section>
+
+<section id="sites">
+  <div class="reveal">
+    <p class="section-eyebrow">Dive Sites</p>
+    <h2 class="section-title">World-class locations for every diver.</h2>
+  </div>
+  <div class="site-grid reveal">
+    <article class="site-item active" data-img="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" data-name="Agatti Island" data-desc="A calm and vibrant atoll known for clear turquoise lagoons, thriving corals, and easy access to spectacular reef diving." data-depth="5-25m" data-fish="🐠">
+      <div class="site-thumb" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80');"></div>
+      <div>
+        <h3>Agatti Island</h3>
+        <div class="site-meta">Lakshadweep · Calm lagoons</div>
+        <span class="site-depth">Max depth: 25m</span>
+      </div>
+    </article>
+    <article class="site-item" data-img="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80" data-name="Bangaram Island" data-desc="Famous for its powdery beaches, reef-rich water, and postcard-perfect underwater scenes ideal for relaxed scuba adventures." data-depth="6-30m" data-fish="🐢">
+      <div class="site-thumb" style="background-image: url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=600&q=80');"></div>
+      <div>
+        <h3>Bangaram Island</h3>
+        <div class="site-meta">Lakshadweep · Beach & reef</div>
+        <span class="site-depth">Max depth: 30m</span>
+      </div>
+    </article>
+    <article class="site-item" data-img="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80" data-name="Minicoy Island" data-desc="A striking island destination offering vibrant marine life, deep blue waters, and some of the most scenic diving views in the archipelago." data-depth="8-35m" data-fish="🐡">
+      <div class="site-thumb" style="background-image: url('https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=600&q=80');"></div>
+      <div>
+        <h3>Minicoy Island</h3>
+        <div class="site-meta">Lakshadweep · Coral-rich waters</div>
+        <span class="site-depth">Max depth: 35m</span>
+      </div>
+    </article>
+    <article class="site-item" data-img="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=80" data-name="Kadmat Island" data-desc="Known for crystal-clear lagoons and healthy reef systems, Kadmat is a favourite for divers seeking calm conditions and striking marine biodiversity." data-depth="5-28m" data-fish="🌊">
+      <div class="site-thumb" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=600&q=80');"></div>
+      <div>
+        <h3>Kadmat Island</h3>
+        <div class="site-meta">Lakshadweep · Reef ecosystem</div>
+        <span class="site-depth">Max depth: 28m</span>
+      </div>
+    </article>
+  </div>
+  <div class="site-preview reveal">
+    <div class="site-preview-image" id="siteImage" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80');"></div>
+    <div class="site-preview-glow"></div>
+    <div class="site-fish" id="siteFish">🐠</div>
+    <div class="site-preview-inner">
+      <h3 id="siteName">Agatti Island</h3>
+      <p id="siteDesc">A calm and vibrant atoll known for clear turquoise lagoons, thriving corals, and easy access to spectacular reef diving.</p>
+      <span class="site-depth" id="siteDepth">Max depth: 5-25m</span>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="reveal">
+    <p class="section-eyebrow">Diver Stories</p>
+    <h2 class="section-title">What our divers say</h2>
+  </div>
+  <div class="testimonials-wrap reveal">
+    <article class="testi-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"The Raja Ampat liveaboard changed how I see the ocean. The guides anticipated every question before I asked. Already booked trip two."</blockquote>
+      <div class="testi-author">Priya Nair</div>
+      <div class="testi-meta">Advanced Diver · Kerala</div>
+    </article>
+    <article class="testi-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Started with zero experience. Got Open Water certified in four days. The instructors were patient, professional, and genuinely passionate."</blockquote>
+      <div class="testi-author">Marcus Webb</div>
+      <div class="testi-meta">Open Water Graduate · London</div>
+    </article>
+    <article class="testi-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"The Palau hammerhead dive is something I'll describe to my grandchildren. The night dive with bioluminescence — no words exist for it."</blockquote>
+      <div class="testi-author">Yuki Tanaka</div>
+      <div class="testi-meta">Expedition Diver · Tokyo</div>
+    </article>
+  </div>
+</section>
+
+<section class="page-headline reveal">
+  <div>
+    <p class="section-eyebrow">Ready to descend?</p>
+    <h2 class="section-title">Join hundreds of divers who chose Marlinos Diventures.</h2>
+    <p class="section-sub">Thoughtful planning, premium instructors, and unforgettable underwater moments.</p>
+    <div class="hero-actions">
+      <a href="{% url 'booking' %}" class="btn-primary premium-cta">Book a Dive</a>
+      <a href="{% url 'contact' %}" class="btn-outline">Talk to Us</a>
+    </div>
+  </div>
+</section>
+
+<section id="why-us">
+  <div class="reveal">
+    <p class="section-eyebrow">Why divers choose us</p>
+    <h2 class="section-title">A calm, premium experience from the first message to the last ascent.</h2>
+  </div>
+  <div class="detail-grid reveal">
+    <article class="detail-card">
+      <span class="exp-tag">Safety first</span>
+      <h3>Small groups, clear briefings, expert guidance</h3>
+      <p>Every dive is supported with thoughtful preparation, modern gear advice, and patient instruction.</p>
+    </article>
+    <article class="detail-card">
+      <span class="exp-tag">Curated travel</span>
+      <h3>Handpicked itineraries and seamless planning</h3>
+      <p>From reef weekends to liveaboard journeys, every trip is arranged to feel effortless and memorable.</p>
+    </article>
+    <article class="detail-card">
+      <span class="exp-tag">Ocean moments</span>
+      <h3>Wildlife, wrecks, and reefs in one experience</h3>
+      <p>Whether you want coral gardens, manta encounters, or night dives, the journey is always tailored.</p>
+    </article>
+  </div>
+</section>
+
+<section id="signature-journeys">
+  <div class="reveal">
+    <p class="section-eyebrow">Signature journeys</p>
+    <h2 class="section-title">Thoughtfully designed adventures for every level of diver.</h2>
+  </div>
+  <div class="card-grid reveal">
+    <article class="pkg-card">
+      <div class="pkg-icon">🌊</div>
+      <h3>Beginner Escape</h3>
+      <p>Easy reef dives, calm water, and a gentle introduction to open-water exploration.</p>
+    </article>
+    <article class="pkg-card featured">
+      <div class="pkg-icon">🐙</div>
+      <h3>Reef & Wreck Week</h3>
+      <p>Blend vibrant reefs, wreck history, and night diving for a richer underwater experience.</p>
+    </article>
+    <article class="pkg-card">
+      <div class="pkg-icon">⭐</div>
+      <h3>Luxury Liveaboard</h3>
+      <p>Premium cabins, chef-prepared meals, and daily guided dives in spectacular marine regions.</p>
+    </article>
+  </div>
+</section>
+
+<section class="page-headline reveal" id="plan-dive">
+  <div class="booking-panel-inner">
+    <div id="bookingNotice" class="booking-notice" role="status" aria-live="polite" hidden>
+      Your booking request is being prepared. You will be redirected to WhatsApp shortly.
+    </div>
+    <div class="booking-panel-header">
+      <p class="section-eyebrow">Plan your dive</p>
+      <h3>Share a few details and we’ll prepare your next adventure.</h3>
+      <p class="booking-panel-sub">A short WhatsApp message helps us suggest the best package, timing, and dive style.</p>
+    </div>
+    <form id="bookingForm">
+      <div class="form-grid">
+        <input class="form-field" type="text" id="name" placeholder="Your Name" required>
+        <input class="form-field" type="email" id="email" placeholder="Email Address" required>
+        <input class="form-field" type="tel" id="phone" placeholder="Phone Number" required>
+        <select class="form-field" id="package" required>
+          <option value="">Select Package</option>
+          <option value="Discovery">Discovery</option>
+          <option value="Explorer">Explorer</option>
+          <option value="Expedition">Expedition</option>
+        </select>
+      </div>
+      <div class="form-grid">
+        <input class="form-field" type="date" id="date" required>
+        <textarea class="form-field" id="message" rows="4" placeholder="Additional requirements"></textarea>
+      </div>
+      <button class="btn-primary premium-cta" type="submit">Submit</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

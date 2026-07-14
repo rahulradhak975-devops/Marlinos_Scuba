@@ -1,0 +1,42 @@
+{% extends "dives/base.html" %}
+
+{% block title %}FAQ | Marlinos Diventures{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="hero-content reveal">
+    <p class="hero-eyebrow">Frequently Asked Questions</p>
+    <h1 class="hero-h1">Answers for your next scuba adventure.</h1>
+    <p class="hero-sub">Clear pricing, safety, equipment, and itinerary details to help you book with confidence.</p>
+  </div>
+</section>
+
+<section>
+  <div class="faq-grid reveal">
+    <article class="faq-card">
+      <button class="faq-toggle" aria-expanded="false">What should I bring for my first dive?</button>
+      <div class="faq-answer hidden">
+        <p>Bring your swimwear, sunscreen, a towel, and any personal certification cards. We provide all scuba gear, including wetsuits, regulators, and tanks.</p>
+      </div>
+    </article>
+    <article class="faq-card">
+      <button class="faq-toggle" aria-expanded="false">Do I need prior experience?</button>
+      <div class="faq-answer hidden">
+        <p>No prior scuba experience is required for beginner packages. Our open water courses guide you through every step in the pool and ocean.</p>
+      </div>
+    </article>
+    <article class="faq-card">
+      <button class="faq-toggle" aria-expanded="false">Is WhatsApp booking secure?</button>
+      <div class="faq-answer hidden">
+        <p>Yes. WhatsApp is used only for booking communication and confirmation. We do not store payment or sensitive personal information through the chat link.</p>
+      </div>
+    </article>
+    <article class="faq-card">
+      <button class="faq-toggle" aria-expanded="false">Can I upgrade to a liveaboard later?</button>
+      <div class="faq-answer hidden">
+        <p>Yes. Many guests start with a day package and move into liveaboard expeditions once they are ready. We can help plan your upgrade seamlessly.</p>
+      </div>
+    </article>
+  </div>
+</section>
+{% endblock %}

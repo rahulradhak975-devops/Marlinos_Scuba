@@ -1,0 +1,53 @@
+{% extends "dives/base.html" %}
+
+{% block title %}Contact | Marlinos Diventures{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="hero-content reveal">
+    <p class="hero-eyebrow">Get in touch</p>
+    <h1 class="hero-h1">Let's plan your next dive.</h1>
+    <p class="hero-sub">Send us a message, book a WhatsApp consult, or learn about dive packages and safety protocols.</p>
+    <div class="hero-actions">
+      <a href="{% url 'booking' %}" class="btn-primary premium-cta">Book a Dive</a>
+      <button type="button" class="btn-outline whatsapp-chat">WhatsApp Chat</button>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="contact-grid reveal">
+    <div class="contact-card">
+      <h3>Contact details</h3>
+      <div class="contact-detail">
+        <strong>Email</strong>
+        <span>meshivadharpr96@gmail.com</span>
+      </div>
+      <div class="contact-detail">
+        <strong>Phone</strong>
+        <span>+91 88914 54631</span>
+      </div>
+      <div class="contact-detail">
+        <strong>WhatsApp</strong>
+        <span>+91 88914 54631</span>
+      </div>
+      <div class="contact-detail">
+        <strong>Location</strong>
+        <span>Kerala, India — bookings worldwide</span>
+      </div>
+    </div>
+    <div class="contact-card">
+      <h3>Message us</h3>
+      <form id="contactForm">
+        <div class="form-grid">
+          <input class="form-field" type="text" id="contactName" placeholder="Your Name" required>
+          <input class="form-field" type="email" id="contactEmail" placeholder="Your Email" required>
+        </div>
+        <input class="form-field" type="tel" id="contactPhone" placeholder="Phone Number" required>
+        <textarea class="form-field" id="contactMessage" rows="6" placeholder="Tell us your travel dates or questions"></textarea>
+        <button class="btn-primary premium-cta" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

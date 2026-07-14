@@ -1,0 +1,17 @@
+Django>=6.0,<7.0
+python-dotenv>=1.0,<2.0
+gunicorn>=22.0,<23.0
+whitenoise>=6.0,<7.0
+
+
+#Future Enhancements
+AI Virtual Dive Assistant
+Marine Life Recognition using AI
+Weather & Tide Forecast Integration
+Emergency SOS Feature
+Mobile Application
+QR Code Check-in
+Digital Dive Logbook
+WhatsApp Notifications
+Google Maps Integration
+Multi-language Support
