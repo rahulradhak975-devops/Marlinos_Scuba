@@ -5,7 +5,7 @@ whitenoise>=6.0,<7.0
 
 
 #Future Enhancements
-AI Virtual Dive Assistant
+#AI Virtual Dive Assistant
 Marine Life Recognition using AI
 Weather & Tide Forecast Integration
 Emergency SOS Feature
