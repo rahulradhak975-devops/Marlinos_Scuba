@@ -21,7 +21,9 @@ import hmac
 import hashlib
 from datetime import datetime
 
+from .forms import ReserveYourSpotForm, BookPackagesForm, TalkToUsForm
 from .models import Enquiry
+from .services import send_booking_emails
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -146,11 +148,31 @@ def booking(request):
     ]
 
     if request.method == "POST":
-        selected_package = (request.POST.get("package") or "").strip()
-        if selected_package:
-            request.session["selected_package"] = selected_package
-            return redirect("booking_confirmation")
-        return render(request, "dives/booking.html", {"packages": packages, "error": "Please select a package."})
+        form = BookPackagesForm(request.POST)
+        if form.is_valid():
+            selected_package = (form.cleaned_data.get("package") or "").strip()
+            if selected_package:
+                Enquiry.objects.create(
+                    name=form.cleaned_data.get("name") or "",
+                    email=form.cleaned_data.get("email") or "",
+                    phone=form.cleaned_data.get("phone") or "",
+                    package=selected_package,
+                    preferred_date=form.cleaned_data.get("preferred_date") or "",
+                    message=form.cleaned_data.get("message") or form.cleaned_data.get("requirements") or "",
+                    enquiry_type="booking",
+                )
+                send_booking_emails(
+                    name=form.cleaned_data.get("name") or "Customer",
+                    email=form.cleaned_data.get("email") or "",
+                    phone=form.cleaned_data.get("phone") or "",
+                    package=selected_package,
+                    preferred_date=form.cleaned_data.get("preferred_date") or "",
+                    form_type="Book Packages",
+                    message=form.cleaned_data.get("message") or form.cleaned_data.get("requirements") or "",
+                )
+                request.session["selected_package"] = selected_package
+                return redirect("booking_confirmation")
+        return render(request, "dives/booking.html", {"packages": packages, "error": "Please complete the required fields."})
 
     return render(request, "dives/booking.html", {"packages": packages})
 
@@ -185,40 +207,48 @@ def package_detail(request, package_name):
         return redirect("home")
 
     if request.method == "POST":
-        email = (request.POST.get("email") or "").strip()
-        phone = (request.POST.get("phone") or "").strip()
-        alt_phone = (request.POST.get("alt_phone") or "").strip()
-        preferred_date = (request.POST.get("preferred_date") or "").strip()
-        preferred_time = (request.POST.get("preferred_time") or "").strip()
-        requirements = (request.POST.get("requirements") or "").strip()
+        form = ReserveYourSpotForm(request.POST)
+        if form.is_valid():
+            email = (form.cleaned_data.get("email") or "").strip()
+            phone = (form.cleaned_data.get("phone") or "").strip()
+            alt_phone = (form.cleaned_data.get("alt_phone") or "").strip()
+            preferred_date = (form.cleaned_data.get("preferred_date") or "").strip()
+            preferred_time = (form.cleaned_data.get("preferred_time") or "").strip()
+            requirements = (form.cleaned_data.get("requirements") or "").strip()
 
-        if not email and not phone:
-            return render(request, "dives/package_detail.html", {"package": package, "error": "Please enter an email address or mobile number."})
+            if not email and not phone:
+                return render(request, "dives/package_detail.html", {"package": package, "error": "Please enter an email address or mobile number."})
 
-        request.session["selected_package"] = package["name"]
-        request.session["customer_email"] = email
-        request.session["customer_phone"] = phone
-        request.session["customer_alt_phone"] = alt_phone
-        request.session["preferred_date"] = preferred_date
-        request.session["preferred_time"] = preferred_time
-        request.session["requirements"] = requirements
-
-        if email:
-            confirmation_subject = f"Booking Request Confirmed - {package['name']}"
-            confirmation_body = (
-                f"Dear Customer,\n\n"
-                f"Thank you for submitting your request for {package['name']}. We have received your booking enquiry and our team will contact you shortly.\n\n"
-                f"Package: {package['name']}\n"
-                f"Location: {package['location']}\n"
-                f"Preferred Date: {preferred_date or 'Not provided'}\n"
-                f"Preferred Time: {preferred_time or 'Not provided'}\n"
-                f"Additional Requirements: {requirements or 'None'}\n\n"
-                f"Warm regards,\n"
-                f"Marlinos Diventures"
+            Enquiry.objects.create(
+                name=form.cleaned_data.get("name") or "",
+                email=email,
+                phone=phone,
+                package=package["name"],
+                preferred_date=preferred_date,
+                message=f"Alt phone: {alt_phone}\nPreferred time: {preferred_time}\nRequirements: {requirements}",
+                enquiry_type="booking",
             )
-            send_email_fallback(email, confirmation_subject, confirmation_body)
 
-        return redirect("booking_confirmation")
+            send_booking_emails(
+                name=form.cleaned_data.get("name") or "Customer",
+                email=email,
+                phone=phone,
+                package=package["name"],
+                preferred_date=preferred_date,
+                form_type="Reserve Your Spot",
+                message=requirements,
+            )
+
+            request.session["selected_package"] = package["name"]
+            request.session["customer_email"] = email
+            request.session["customer_phone"] = phone
+            request.session["customer_alt_phone"] = alt_phone
+            request.session["preferred_date"] = preferred_date
+            request.session["preferred_time"] = preferred_time
+            request.session["requirements"] = requirements
+            return redirect("booking_confirmation")
+
+        return render(request, "dives/package_detail.html", {"package": package, "error": "Please complete the required fields."})
 
     return render(request, "dives/package_detail.html", {"package": package})
 
@@ -227,6 +257,39 @@ def booking_confirmation(request):
     selected_package = request.session.get("selected_package", "")
     customer_email = request.session.get("customer_email", "")
     return render(request, "dives/booking_confirmation.html", {"selected_package": selected_package, "customer_email": customer_email})
+
+
+def talk_to_us(request):
+    if request.method == "POST":
+        form = TalkToUsForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data.get("name") or ""
+            email = form.cleaned_data.get("email") or ""
+            phone = form.cleaned_data.get("phone") or ""
+            message = form.cleaned_data.get("message") or ""
+
+            Enquiry.objects.create(
+                name=name,
+                email=email,
+                phone=phone,
+                message=message,
+                enquiry_type="contact",
+            )
+            send_booking_emails(
+                name=name,
+                email=email,
+                phone=phone,
+                package="Talk to Us",
+                preferred_date="",
+                form_type="Talk to Us",
+                message=message,
+            )
+            request.session["selected_package"] = "Talk to Us"
+            request.session["customer_email"] = email
+            return redirect("booking_confirmation")
+        return render(request, "dives/contact.html", {"error": "Please complete the required fields."})
+
+    return render(request, "dives/contact.html")
 
 
 def send_whatsapp_message(to_number, message):

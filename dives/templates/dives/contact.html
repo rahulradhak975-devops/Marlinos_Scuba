@@ -38,13 +38,14 @@
     </div>
     <div class="contact-card">
       <h3>Message us</h3>
-      <form id="contactForm">
+      <form id="contactForm" method="post">
+        {% csrf_token %}
         <div class="form-grid">
-          <input class="form-field" type="text" id="contactName" placeholder="Your Name" required>
-          <input class="form-field" type="email" id="contactEmail" placeholder="Your Email" required>
+          <input class="form-field" type="text" id="contactName" name="name" placeholder="Your Name">
+          <input class="form-field" type="email" id="contactEmail" name="email" placeholder="Your Email">
         </div>
-        <input class="form-field" type="tel" id="contactPhone" placeholder="Phone Number" required>
-        <textarea class="form-field" id="contactMessage" rows="6" placeholder="Tell us your travel dates or questions"></textarea>
+        <input class="form-field" type="tel" id="contactPhone" name="phone" placeholder="Phone Number">
+        <textarea class="form-field" id="contactMessage" name="message" rows="6" placeholder="Tell us your travel dates or questions"></textarea>
         <button class="btn-primary premium-cta" type="submit">Submit</button>
       </form>
     </div>
