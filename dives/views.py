@@ -333,6 +333,7 @@ def send_email_fallback(to_email, subject, body):
                     if user and password:
                         server.login(user, password)
                     server.sendmail(from_addr, [to_email], message)
+            logger.info("Email sent successfully to %s", to_email)
             return True
         except Exception as exc:
             logger.error("Email fallback send failed: %s", exc)
