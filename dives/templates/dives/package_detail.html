@@ -1,0 +1,43 @@
+{% extends "dives/base.html" %}
+
+{% block title %}{{ package.name }} | Marlinos Diventures{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <p class="section-eyebrow">Package Details</p>
+  <h1 class="section-title">{{ package.name }}</h1>
+  <p class="section-sub">{{ package.description }}</p>
+</section>
+
+<section class="booking-panel">
+  <div class="booking-panel-inner">
+    <div class="booking-panel-header">
+      <p class="section-eyebrow">Reserve your spot</p>
+      <h3>{{ package.name }}</h3>
+      <p class="booking-panel-sub">Location: {{ package.location }}</p>
+      <p class="booking-panel-sub">Price: {{ package.price }}</p>
+    </div>
+
+    {% if error %}
+      <p class="booking-notice" role="alert">{{ error }}</p>
+    {% endif %}
+
+    <ul class="pkg-features">
+      {% for item in package.highlights %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+
+    <form method="post">
+      {% csrf_token %}
+      <input type="text" name="phone" placeholder="Mobile Number" required>
+      <input type="email" name="email" placeholder="Email ID" required>
+      <input type="text" name="alt_phone" placeholder="Alternative Number">
+      <input type="date" name="preferred_date" required>
+      <input type="time" name="preferred_time">
+      <textarea name="requirements" rows="4" placeholder="Additional requirements"></textarea>
+      <button class="btn-primary premium-cta" type="submit">Submit Request</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

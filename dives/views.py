@@ -155,9 +155,78 @@ def booking(request):
     return render(request, "dives/booking.html", {"packages": packages})
 
 
+def package_detail(request, package_name):
+    packages = {
+        "intro-dive-escape": {
+            "name": "Intro Dive Escape",
+            "description": "A calm first-time introduction to Lakshadweep scuba diving.",
+            "location": "Agatti · Bangaram · Kalpeni",
+            "highlights": ["1-day beginner programme", "2 guided dives", "Equipment and instructor support"],
+            "price": "5500/- per person",
+        },
+        "reef-explorer": {
+            "name": "Reef Explorer",
+            "description": "A premium reef-focused island dive experience for certified divers.",
+            "location": "Bangaram · Kadmat · Minicoy",
+            "highlights": ["3-day island diving package", "Up to 4 dives daily", "Boat transfers and dive guide included"],
+            "price": "12000/- per person",
+        },
+        "island-adventure": {
+            "name": "Island Adventure",
+            "description": "An extended diving trip with reef exploration and night dive options.",
+            "location": "Agatti · Kadmat · Minicoy",
+            "highlights": ["5-day premium itinerary", "Night dive option available", "Stay, transfers, and dive planning included"],
+            "price": "18000/- per person",
+        },
+    }
+
+    package = packages.get(package_name)
+    if not package:
+        return redirect("home")
+
+    if request.method == "POST":
+        email = (request.POST.get("email") or "").strip()
+        phone = (request.POST.get("phone") or "").strip()
+        alt_phone = (request.POST.get("alt_phone") or "").strip()
+        preferred_date = (request.POST.get("preferred_date") or "").strip()
+        preferred_time = (request.POST.get("preferred_time") or "").strip()
+        requirements = (request.POST.get("requirements") or "").strip()
+
+        if not email and not phone:
+            return render(request, "dives/package_detail.html", {"package": package, "error": "Please enter an email address or mobile number."})
+
+        request.session["selected_package"] = package["name"]
+        request.session["customer_email"] = email
+        request.session["customer_phone"] = phone
+        request.session["customer_alt_phone"] = alt_phone
+        request.session["preferred_date"] = preferred_date
+        request.session["preferred_time"] = preferred_time
+        request.session["requirements"] = requirements
+
+        if email:
+            confirmation_subject = f"Booking Request Confirmed - {package['name']}"
+            confirmation_body = (
+                f"Dear Customer,\n\n"
+                f"Thank you for submitting your request for {package['name']}. We have received your booking enquiry and our team will contact you shortly.\n\n"
+                f"Package: {package['name']}\n"
+                f"Location: {package['location']}\n"
+                f"Preferred Date: {preferred_date or 'Not provided'}\n"
+                f"Preferred Time: {preferred_time or 'Not provided'}\n"
+                f"Additional Requirements: {requirements or 'None'}\n\n"
+                f"Warm regards,\n"
+                f"Marlinos Diventures"
+            )
+            send_email_fallback(email, confirmation_subject, confirmation_body)
+
+        return redirect("booking_confirmation")
+
+    return render(request, "dives/package_detail.html", {"package": package})
+
+
 def booking_confirmation(request):
     selected_package = request.session.get("selected_package", "")
-    return render(request, "dives/booking_confirmation.html", {"selected_package": selected_package})
+    customer_email = request.session.get("customer_email", "")
+    return render(request, "dives/booking_confirmation.html", {"selected_package": selected_package, "customer_email": customer_email})
 
 
 def send_whatsapp_message(to_number, message):

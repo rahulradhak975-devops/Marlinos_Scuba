@@ -18,6 +18,7 @@ urlpatterns = [
     path("sites/", views.sites, name="sites"),
     path("stories/", views.stories, name="stories"),
     path("booking/", views.booking, name="booking"),
+    path("packages/<slug:package_name>/", views.package_detail, name="package_detail"),
     path("booking-confirmation/", views.booking_confirmation, name="booking_confirmation"),
     path("booking-notification/", views.booking_notification, name="booking_notification"),
     path("webhook/", views.whatsapp_webhook, name="whatsapp_webhook"),
