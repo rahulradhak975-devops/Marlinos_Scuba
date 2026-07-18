@@ -1,0 +1,19 @@
+{% extends "dives/base.html" %}
+
+{% block title %}Booking Confirmed | Marlinos Diventures{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <p class="section-eyebrow">Booking</p>
+  <h1 class="section-title">Your request has been submitted</h1>
+  <p class="section-sub">Thank you for choosing Marlinos Diventures. We have received your request for {{ selected_package|default:"your selected package" }}.</p>
+</section>
+
+<section class="booking-panel">
+  <div class="booking-panel-inner">
+    <h3>What happens next?</h3>
+    <p>Our team will review your request and contact you shortly with availability and next steps.</p>
+    <a href="{% url 'home' %}" class="btn-primary premium-cta">Back to Home</a>
+  </div>
+</section>
+{% endblock %}

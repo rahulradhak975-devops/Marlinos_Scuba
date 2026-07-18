@@ -1,85 +1,39 @@
 {% extends "dives/base.html" %}
 
-{% block title %}Book a Dive | Marlinos Diventures{% endblock %}
+{% block title %}Book a Package | Marlinos Diventures{% endblock %}
 
 {% block content %}
 <section class="page-hero">
-  <p class="section-eyebrow">Instant Booking</p>
-  <h1 class="section-title">Reserve your dive with WhatsApp.</h1>
-  <p class="section-sub">Send your preferred date, package, and requirements. Our dive planner will confirm availability.</p>
+  <p class="section-eyebrow">Booking</p>
+  <h1 class="section-title">Choose your package</h1>
+  <p class="section-sub">Select the package that fits your trip, then confirm your request.</p>
 </section>
 
 <section class="booking-panel">
   <div class="booking-panel-inner">
     <div class="booking-panel-header">
-      <p class="section-eyebrow">Booking form</p>
-      <h3>Tell us your dive plan</h3>
-      <p class="booking-panel-sub">We will use this information to prepare a WhatsApp booking message.</p>
+      <p class="section-eyebrow">Select a package</p>
+      <h3>Pick the experience you want to reserve</h3>
+      <p class="booking-panel-sub">We will review your request and follow up with availability and next steps.</p>
     </div>
-    <div id="bookingNotice" class="booking-notice" role="status" aria-live="polite" hidden></div>
-    <form id="bookingForm">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Email Address" required>
-      <input type="tel" id="phone" placeholder="Phone Number" required>
-      <select id="package" required>
-        <option value="">Select Package</option>
-        <option value="Intro Dive Escape">Intro Dive Escape</option>
-        <option value="Reef Explorer">Reef Explorer</option>
-        <option value="Island Adventure">Island Adventure</option>
-      </select>
-      <input type="date" id="date" required>
-      <textarea id="message" rows="4" placeholder="Additional requirements"></textarea>
-      <button class="btn-primary premium-cta" type="submit">Book via WhatsApp</button>
+
+    {% if error %}
+      <p class="booking-notice" role="alert">{{ error }}</p>
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="pkg-grid">
+        {% for package in packages %}
+          <label class="pkg-card" style="cursor:pointer;">
+            <input type="radio" name="package" value="{{ package.name }}" required style="margin-bottom: 12px;" />
+            <h3>{{ package.name }}</h3>
+            <p>{{ package.description }}</p>
+          </label>
+        {% endfor %}
+      </div>
+      <button class="btn-primary premium-cta" type="submit">Submit Booking Request</button>
     </form>
   </div>
 </section>
-
-<script>
-const bookingForm = document.getElementById("bookingForm");
-
-if (bookingForm) {
-  bookingForm.addEventListener("submit", async function(e) {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    const pkg = document.getElementById("package").value;
-    const date = document.getElementById("date").value;
-    const message = document.getElementById("message").value;
-
-    const payload = { name, email, phone, package: pkg, date, message };
-    const customerMessage = `🌊 New Dive Booking Request\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nPackage: ${pkg}\nPreferred Date: ${date}\n\nMessage: ${message}`;
-    const ownerMessage = `New Dive Booking Request\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nPackage: ${pkg}\nPreferred Date: ${date}\n\nMessage: ${message}`;
-    const ownerUrl = `https://wa.me/918891454631?text=${encodeURIComponent(ownerMessage)}`;
-
-    const notice = document.getElementById("bookingNotice");
-    if (notice) {
-      notice.hidden = false;
-      notice.textContent = "Your booking request is being prepared. You will be redirected to WhatsApp shortly.";
-    }
-
-    let result = null;
-    try {
-      const response = await fetch('/booking-notification/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      result = await response.json();
-    } catch (error) {
-      console.error('Booking notification failed', error);
-    }
-
-    if (notice) {
-      notice.textContent = result?.meta_error
-        ? 'Your booking was prepared for WhatsApp, but Meta rejected the access token. Please refresh the credentials to enable direct delivery.'
-        : 'Your booking request is being prepared. You will be redirected to WhatsApp shortly.';
-    }
-
-    window.open(ownerUrl, '_blank', 'width=600,height=800');
-    window.location.href = `https://wa.me/918891454631?text=${encodeURIComponent(customerMessage)}`;
-  });
-}
-</script>
 {% endblock %}

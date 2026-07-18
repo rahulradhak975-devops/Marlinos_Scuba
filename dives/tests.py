@@ -29,13 +29,26 @@ class HomePageTests(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, "/")
 
+    def test_booking_page_shows_package_options(self):
+        response = self.client.get(reverse("booking"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Select a package")
+        self.assertContains(response, "Intro Dive Escape")
+        self.assertContains(response, "Reef Explorer")
+
+    def test_booking_submit_redirects_to_confirmation(self):
+        response = self.client.post(reverse("booking"), {"package": "Reef Explorer"})
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, reverse("booking_confirmation"))
+
     def test_section_pages_render(self):
         pages = [
             "experiences",
             "packages",
             "sites",
             "stories",
-            "booking",
         ]
 
         for page in pages:

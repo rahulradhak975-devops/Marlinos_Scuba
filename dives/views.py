@@ -139,7 +139,25 @@ def stories(request):
 
 
 def booking(request):
-    return redirect("/#booking")
+    packages = [
+        {"name": "Intro Dive Escape", "description": "A calm first-time introduction to Lakshadweep scuba diving."},
+        {"name": "Reef Explorer", "description": "A premium reef-focused island dive experience for certified divers."},
+        {"name": "Island Adventure", "description": "An extended diving trip with reef exploration and night dive options."},
+    ]
+
+    if request.method == "POST":
+        selected_package = (request.POST.get("package") or "").strip()
+        if selected_package:
+            request.session["selected_package"] = selected_package
+            return redirect("booking_confirmation")
+        return render(request, "dives/booking.html", {"packages": packages, "error": "Please select a package."})
+
+    return render(request, "dives/booking.html", {"packages": packages})
+
+
+def booking_confirmation(request):
+    selected_package = request.session.get("selected_package", "")
+    return render(request, "dives/booking_confirmation.html", {"selected_package": selected_package})
 
 
 def send_whatsapp_message(to_number, message):
