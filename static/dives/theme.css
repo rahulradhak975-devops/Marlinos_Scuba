@@ -2437,7 +2437,259 @@ footer {
     grid-template-columns: 1fr;
   }
 }
-/* ─── RESPONSIVE ───────────────────────────────── */
+/* ─── LAKSHADWEEP DIVE SITES ─────────────────── */
+.lakshadweep-section {
+  padding-top: 20px;
+}
+
+.lakshadweep-shell {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 8px;
+}
+
+.lakshadweep-intro {
+  margin-bottom: 24px;
+}
+
+.lakshadweep-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto 24px;
+  padding: 18px 20px;
+  border: 1px solid rgba(127, 255, 212, 0.16);
+  border-radius: 18px;
+  background: rgba(5, 14, 26, 0.58);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+}
+
+.lakshadweep-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 280px;
+  min-width: 0;
+  padding: 12px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lakshadweep-search svg {
+  width: 16px;
+  height: 16px;
+  color: var(--teal);
+  flex: 0 0 16px;
+}
+
+.lakshadweep-search input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--white);
+  font-size: 0.95rem;
+}
+
+.lakshadweep-search input::placeholder {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.lakshadweep-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-chip {
+  border: 1px solid rgba(127, 255, 212, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--white);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.filter-chip:hover,
+.filter-chip:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(127, 255, 212, 0.42);
+  background: rgba(0, 201, 177, 0.16);
+}
+
+.filter-chip.active {
+  background: linear-gradient(135deg, rgba(0, 201, 177, 0.95), rgba(0, 146, 139, 0.95));
+  color: var(--midnight);
+  font-weight: 700;
+}
+
+.lakshadweep-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.8fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.lakshadweep-map-card,
+.lakshadweep-panel {
+  border: 1px solid rgba(127, 255, 212, 0.16);
+  border-radius: 24px;
+  background: rgba(5, 14, 26, 0.64);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(18px);
+  overflow: hidden;
+}
+
+.lakshadweep-map-card {
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+}
+
+.lakshadweep-map {
+  flex: 1;
+  min-height: 380px;
+  background: linear-gradient(145deg, rgba(3, 27, 46, 0.95), rgba(4, 49, 76, 0.95));
+}
+
+.lakshadweep-site-list {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lakshadweep-site-list button {
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--white);
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.lakshadweep-site-list button:hover,
+.lakshadweep-site-list button:focus-visible,
+.lakshadweep-site-list button.active {
+  transform: translateY(-2px);
+  border-color: rgba(127, 255, 212, 0.36);
+  background: rgba(0, 201, 177, 0.12);
+}
+
+.lakshadweep-panel {
+  position: relative;
+  min-height: 560px;
+  transform: translateX(0);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+}
+
+.lakshadweep-panel[aria-hidden="true"] {
+  opacity: 0;
+  transform: translateX(8px);
+  pointer-events: none;
+}
+
+.lakshadweep-panel-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(0, 201, 177, 0.16);
+  color: var(--white);
+  z-index: 2;
+  font-size: 1.2rem;
+}
+
+.lakshadweep-panel-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lakshadweep-card-image {
+  height: 220px;
+  border-radius: 18px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lakshadweep-card-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.28rem;
+  color: #f7ffff;
+}
+
+.lakshadweep-card-subtitle {
+  color: var(--teal);
+  font-size: 0.86rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.lakshadweep-card-description,
+.lakshadweep-card-list,
+.lakshadweep-card-meta {
+  color: rgba(255, 255, 255, 0.76);
+  line-height: 1.7;
+}
+
+.lakshadweep-card-list {
+  display: grid;
+  gap: 8px;
+  padding-left: 18px;
+}
+
+.lakshadweep-card-meta {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.lakshadweep-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.lakshadweep-actions .btn-primary,
+.lakshadweep-actions .btn-outline {
+  width: auto;
+  padding: 12px 18px;
+  font-size: 0.74rem;
+}
+
+.lakshadweep-card-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #ffe08a;
+  font-weight: 700;
+}
+
 @media (max-width: 1024px) {
   .offers-showcase { padding: 100px 0; }
   .offers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -2468,6 +2720,18 @@ footer {
     background-attachment: scroll;
   }
   #hero { padding: 80px 20px 120px; min-height: 100svh; }
+  .lakshadweep-toolbar { flex-direction: column; align-items: stretch; }
+  .lakshadweep-layout { grid-template-columns: 1fr; }
+  .lakshadweep-panel {
+    position: fixed;
+    inset: auto 0 0 0;
+    max-height: 78vh;
+    border-radius: 24px 24px 0 0;
+    transform: translateY(110%);
+  }
+  .lakshadweep-panel.is-open {
+    transform: translateY(0);
+  }
   .hero-content { padding: 0 10px; max-width: 100%; width: 100%; }
   .hero-h1 { font-size: 1.9rem; line-height: 1.3; }
   .service-segment { grid-template-columns: 1fr; }
@@ -2493,6 +2757,11 @@ footer {
 
 @media (max-width: 600px) {
   body { font-size: 14px; }
+  .lakshadweep-shell { padding: 0 2px; }
+  .lakshadweep-map-card { min-height: 320px; }
+  .lakshadweep-filters { gap: 8px; }
+  .filter-chip { padding: 8px 10px; font-size: 0.72rem; }
+  .lakshadweep-panel-content { padding: 20px; }
   #hero { min-height: 100svh; }
   .hero-content { padding: 0 8px; }
   section { padding: 60px 16px; }

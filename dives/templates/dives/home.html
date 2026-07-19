@@ -313,6 +313,51 @@
   </div>
 </section>
 
+<section class="lakshadweep-section reveal" id="lakshadweep-sites" aria-labelledby="lakshadweep-title">
+  <div class="lakshadweep-shell">
+    <div class="page-headline lakshadweep-intro">
+      <div>
+        <p class="section-eyebrow">Lakshadweep Dive Sites</p>
+        <h2 class="section-title" id="lakshadweep-title">Explore Lakshadweep Dive Sites</h2>
+        <p class="section-sub">Discover the unique underwater world of Lakshadweep. Click on any dive site to learn about its marine life, coral reefs, diving difficulty, visibility, and specialties.</p>
+      </div>
+    </div>
+
+    <div class="lakshadweep-toolbar">
+      <label class="lakshadweep-search" for="lakshadweep-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="6"></circle>
+          <path d="m20 20-4.2-4.2"></path>
+        </svg>
+        <input id="lakshadweep-search" type="search" placeholder="Search islands" autocomplete="off" aria-label="Search dive islands">
+      </label>
+      <div class="lakshadweep-filters" role="toolbar" aria-label="Filter dive sites">
+        <button type="button" class="filter-chip active" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="filter-chip" data-filter="Beginner" aria-pressed="false">Beginner</button>
+        <button type="button" class="filter-chip" data-filter="Intermediate" aria-pressed="false">Intermediate</button>
+        <button type="button" class="filter-chip" data-filter="Advanced" aria-pressed="false">Advanced</button>
+        <button type="button" class="filter-chip" data-filter="Drift Diving" aria-pressed="false">Drift Diving</button>
+        <button type="button" class="filter-chip" data-filter="Shipwreck" aria-pressed="false">Shipwreck</button>
+        <button type="button" class="filter-chip" data-filter="Coral Gardens" aria-pressed="false">Coral Gardens</button>
+        <button type="button" class="filter-chip" data-filter="Photography" aria-pressed="false">Photography</button>
+        <button type="button" class="filter-chip" data-filter="Marine Life" aria-pressed="false">Marine Life</button>
+      </div>
+    </div>
+
+    <div class="lakshadweep-layout">
+      <div class="lakshadweep-map-card">
+        <div id="lakshadweep-map" class="lakshadweep-map" aria-label="Interactive Lakshadweep dive map"></div>
+        <div id="lakshadweep-site-list" class="lakshadweep-site-list" role="listbox" aria-label="Dive site list"></div>
+      </div>
+
+      <aside id="lakshadweep-panel" class="lakshadweep-panel" aria-live="polite" aria-hidden="true">
+        <button type="button" class="lakshadweep-panel-close" id="lakshadweep-panel-close" aria-label="Close dive site details">×</button>
+        <div class="lakshadweep-panel-content" id="lakshadweep-panel-content"></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
 <section class="page-headline reveal" id="plan-dive">
   <div class="booking-panel-inner">
     <div id="bookingNotice" class="booking-notice" role="status" aria-live="polite" hidden>
