@@ -129,11 +129,13 @@ async function notifyOwnerAndOpenCustomer(payload, customerMessage) {
     const response = await fetch('/booking-notification/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload || {})
     });
-    result = await response.json();
+    const text = await response.text();
+    result = text ? JSON.parse(text) : {};
   } catch (error) {
     console.error('Booking notification failed', error);
+    result = { status: 'error', message: error.message };
   }
 
   const notice = document.getElementById('bookingNotice');
