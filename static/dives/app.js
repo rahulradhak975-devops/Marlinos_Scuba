@@ -703,6 +703,10 @@ function initLakshadweepExplorer() {
   const panelClose = document.getElementById('lakshadweep-panel-close');
   if (!searchInput || !filterButtons.length) return;
 
+  window.gm_authFailure = function gmAuthFailure() {
+    renderMapFallback(selectedSiteName);
+  };
+
   searchInput.addEventListener('input', (event) => {
     searchQuery = event.target.value;
     renderSiteList();
@@ -746,9 +750,15 @@ function initLakshadweepExplorer() {
   script.async = true;
   script.defer = true;
   script.onerror = () => {
-    renderMapFallback();
+    renderMapFallback(selectedSiteName);
   };
   document.head.appendChild(script);
+
+  window.setTimeout(() => {
+    if (!window.google?.maps) {
+      renderMapFallback(selectedSiteName);
+    }
+  }, 3500);
 }
 
 window.initLakshadweepMap = function initLakshadweepMap() {
