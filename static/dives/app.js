@@ -12,6 +12,13 @@ function openWhatsApp(message) {
 
 function startRevealObserver() {
   const elements = document.querySelectorAll('.reveal');
+  if (!elements.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    elements.forEach((el) => el.classList.add('visible'));
+    return;
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -20,7 +27,16 @@ function startRevealObserver() {
       }
     });
   }, { threshold: 0.15 });
-  elements.forEach(el => observer.observe(el));
+
+  elements.forEach((el) => observer.observe(el));
+
+  window.setTimeout(() => {
+    elements.forEach((el) => {
+      if (!el.classList.contains('visible')) {
+        el.classList.add('visible');
+      }
+    });
+  }, 220);
 }
 
 function startCursor() {
