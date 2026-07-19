@@ -303,6 +303,31 @@ function attachSiteLinks() {
   });
 }
 
+function initHeroVideo() {
+  const heroVideo = document.getElementById('hero-video');
+  if (!heroVideo) return;
+
+  const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reduceMotionQuery.matches) {
+    heroVideo.style.animation = 'none';
+    heroVideo.classList.add('is-ready');
+    return;
+  }
+
+  const revealVideo = () => {
+    heroVideo.classList.add('is-ready');
+  };
+
+  heroVideo.addEventListener('loadeddata', revealVideo, { once: true });
+  heroVideo.addEventListener('canplay', revealVideo, { once: true });
+
+  if (heroVideo.readyState >= 2) {
+    revealVideo();
+  }
+
+  heroVideo.play().catch(() => {});
+}
+
 function initLoader() {
   const loader = document.getElementById('loader');
   const loaderBubblesCont = document.getElementById('bubbles-loader');
@@ -357,6 +382,7 @@ function initLoader() {
 }
 
 function init() {
+  initHeroVideo();
   initLoader();
   startRevealObserver();
   startCursor();
