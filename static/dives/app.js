@@ -592,16 +592,10 @@ const lakshadweepSites = [
 ];
 
 let activeFilter = 'all';
-let searchQuery = '';
 let selectedSiteName = lakshadweepSites[0]?.name || '';
 
 function getFilteredSites() {
-  const query = searchQuery.trim().toLowerCase();
-  return lakshadweepSites.filter((site) => {
-    const matchesFilter = activeFilter === 'all' || site.filters.includes(activeFilter);
-    const matchesQuery = !query || site.name.toLowerCase().includes(query);
-    return matchesFilter && matchesQuery;
-  });
+  return lakshadweepSites.filter((site) => activeFilter === 'all' || site.filters.includes(activeFilter));
 }
 
 function renderSiteList() {
@@ -716,21 +710,13 @@ function updateMapSelection() {
 }
 
 function initLakshadweepExplorer() {
-  const searchInput = document.getElementById('lakshadweep-search');
   const filterButtons = document.querySelectorAll('.filter-chip');
   const panelClose = document.getElementById('lakshadweep-panel-close');
-  if (!searchInput || !filterButtons.length) return;
+  if (!filterButtons.length) return;
 
   window.gm_authFailure = function gmAuthFailure() {
     renderMapFallback(selectedSiteName);
   };
-
-  searchInput.addEventListener('input', (event) => {
-    searchQuery = event.target.value;
-    renderSiteList();
-    renderSiteDetails();
-    updateMapSelection();
-  });
 
   filterButtons.forEach((button) => {
     button.addEventListener('click', () => {
