@@ -833,12 +833,6 @@ window.initLakshadweepMap = function initLakshadweepMap() {
 };
 
 function initLoader() {
-
-    return { name: site.name, marker };
-  });
-};
-
-function initLoader() {
   const loader = document.getElementById('loader');
   const loaderBubblesCont = document.getElementById('bubbles-loader');
   const loaderNum = document.getElementById('loaderNum');

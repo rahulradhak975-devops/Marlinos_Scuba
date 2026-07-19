@@ -2183,8 +2183,11 @@ footer {
 /* Detail pages */
 .page-shell {
   min-height: 100vh;
-  padding-top: 92px;
+  padding-top: 0;
   background: transparent;
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
 .page-hero {
