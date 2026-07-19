@@ -380,11 +380,12 @@ h6 {
 
 /* ─── NAVBAR ───────────────────────────────────── */
 nav {
-  position: fixed;
+  position: fixed !important;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  width: 100%;
+  z-index: 9999;
   padding: 18px clamp(20px, 3vw, 56px);
   display: flex;
   align-items: center;
@@ -393,6 +394,7 @@ nav {
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(127, 255, 212, 0.14);
   transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
 }
 
 nav.scrolled {
