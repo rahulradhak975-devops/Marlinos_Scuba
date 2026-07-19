@@ -2559,6 +2559,41 @@ footer {
   background: linear-gradient(145deg, rgba(3, 27, 46, 0.95), rgba(4, 49, 76, 0.95));
 }
 
+.lakshadweep-map-fallback {
+  display: grid;
+  gap: 16px;
+  height: 100%;
+  padding: 20px;
+}
+
+.lakshadweep-map-fallback-card {
+  border: 1px solid rgba(127, 255, 212, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding: 18px;
+  display: grid;
+  gap: 8px;
+}
+
+.lakshadweep-map-fallback-card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--white);
+}
+
+.lakshadweep-map-fallback-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.76);
+  line-height: 1.6;
+}
+
+.lakshadweep-map-fallback iframe {
+  width: 100%;
+  min-height: 260px;
+  border: 0;
+  border-radius: 18px;
+}
+
 .lakshadweep-site-list {
   display: grid;
   gap: 10px;

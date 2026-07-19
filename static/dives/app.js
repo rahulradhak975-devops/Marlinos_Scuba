@@ -655,10 +655,41 @@ function renderSiteDetails() {
   panel.classList.add('is-open');
 }
 
+function renderMapFallback(siteName = selectedSiteName) {
+  const mapContainer = document.getElementById('lakshadweep-map');
+  if (!mapContainer) return;
+
+  const fallbackSite = lakshadweepSites.find((site) => site.name === siteName) || lakshadweepSites[0];
+  if (!fallbackSite) return;
+
+  mapContainer.innerHTML = `
+    <div class="lakshadweep-map-fallback">
+      <div class="lakshadweep-map-fallback-card">
+        <p class="section-eyebrow">Map preview</p>
+        <h3>${fallbackSite.name}</h3>
+        <p>${fallbackSite.description}</p>
+        <a href="${fallbackSite.mapsUrl}" target="_blank" rel="noopener noreferrer" class="btn-outline">Open in Google Maps</a>
+      </div>
+      <iframe
+        title="${fallbackSite.name} on Google Maps"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=${encodeURIComponent(`${fallbackSite.name} Lakshadweep`)}&z=10&output=embed"
+      ></iframe>
+    </div>
+  `;
+}
+
 function updateMapSelection() {
   const sites = getFilteredSites();
   const selectedSite = sites.find((site) => site.name === selectedSiteName) || sites[0] || lakshadweepSites.find((site) => site.name === selectedSiteName) || lakshadweepSites[0];
   if (!selectedSite) return;
+
+  if (!window.google?.maps) {
+    renderMapFallback(selectedSite.name);
+    return;
+  }
+
   const marker = window.lakshadweepMarkers?.find((entry) => entry.name === selectedSite.name);
   if (marker?.marker) {
     window.lakshadweepMarkers.forEach((entry) => entry.marker.setAnimation(null));
@@ -711,15 +742,21 @@ function initLakshadweepExplorer() {
   if (!mapContainer) return;
 
   const script = document.createElement('script');
-  script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAq-3h8g5UNmN2PAAi0YIVGmWq9sJxgQbYQ&callback=initLakshadweepMap';
+  script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAq-3h8g5UNmN2PAAi0YIVGmWq9sJxgQbYQ&callback=initLakshadweepMap&loading=async';
   script.async = true;
   script.defer = true;
+  script.onerror = () => {
+    renderMapFallback();
+  };
   document.head.appendChild(script);
 }
 
 window.initLakshadweepMap = function initLakshadweepMap() {
   const mapContainer = document.getElementById('lakshadweep-map');
-  if (!mapContainer || !window.google?.maps) return;
+  if (!mapContainer || !window.google?.maps) {
+    renderMapFallback();
+    return;
+  }
 
   const center = { lat: 10.5, lng: 72.8 };
   const map = new window.google.maps.Map(mapContainer, {
@@ -764,6 +801,12 @@ window.initLakshadweepMap = function initLakshadweepMap() {
       window.lakshadweepMarkers.forEach((entry) => entry.marker.setAnimation(null));
       marker.setAnimation(window.google.maps.Animation.BOUNCE);
     });
+
+    return { name: site.name, marker };
+  });
+};
+
+function initLoader() {
 
     return { name: site.name, marker };
   });
