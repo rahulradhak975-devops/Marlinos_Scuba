@@ -18,3 +18,7 @@ services:
         value: marlinos-diventures.onrender.com,marlinosdiventures.com,www.marlinosdiventures.com
       - key: CSRF_TRUSTED_ORIGINS
         value: https://marlinos-diventures.onrender.com,https://marlinosdiventures.com,https://www.marlinosdiventures.com
+      - key: BUSINESS_EMAIL
+        value: info@marlinosdiventures.com
+      - key: OWNER_EMAIL
+        value: info@marlinosdiventures.com

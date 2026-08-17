@@ -10,9 +10,9 @@ logger = logging.getLogger(__name__)
 
 def send_booking_emails(name: str, email: str, phone: str, package: str, preferred_date: str, form_type: str, message: str = "") -> None:
     """Send customer confirmation and business notification emails for a booking inquiry."""
-    business_email = os.getenv("BUSINESS_EMAIL", "meshivadharpr96@gmail.com").strip()
+    business_email = os.getenv("BUSINESS_EMAIL", "info@marlinosdiventures.com").strip()
     if not business_email:
-        business_email = settings.DEFAULT_FROM_EMAIL or "meshivadharpr96@gmail.com"
+        business_email = settings.DEFAULT_FROM_EMAIL or "info@marlinosdiventures.com"
 
     customer_subject = "Booking Request Received – Marlinos Diventures"
     customer_body = f"""Dear {name or 'Customer'},

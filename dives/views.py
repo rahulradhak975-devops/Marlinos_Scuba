@@ -457,7 +457,7 @@ def booking_notification(request):
     api_sent = send_whatsapp_message(owner_number, owner_message)
 
     email_sent = False
-    owner_email = os.getenv("OWNER_EMAIL", "meshivadharpr96@gmail.com")
+    owner_email = os.getenv("OWNER_EMAIL", "info@marlinosdiventures.com")
     if not api_sent:
         subject = f"New booking request from {name or 'Guest'}"
         email_sent = send_email_fallback(owner_email, subject, owner_message)
@@ -549,7 +549,7 @@ def whatsapp_webhook(request):
                     elif mtype == "button":
                         body = msg.get("button", {}).get("text")
                     if body:
-                        owner_email = os.getenv("OWNER_EMAIL", "meshivadharpr96@gmail.com")
+                        owner_email = os.getenv("OWNER_EMAIL", "info@marlinosdiventures.com")
                         subject = f"Incoming WhatsApp message from {sender}"
                         send_email_fallback(owner_email, subject, body)
     except Exception:
