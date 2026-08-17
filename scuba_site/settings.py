@@ -25,7 +25,7 @@ if render_url:
 
 ALLOWED_HOSTS = configured_hosts or default_hosts
 if not configured_hosts:
-    ALLOWED_HOSTS = ["*"]
+    ALLOWED_HOSTS = ["marlinosdiventures.com"]
 
 csrf_origins = [origin.strip() for origin in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",") if origin.strip()]
 if not csrf_origins and render_url:
