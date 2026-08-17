@@ -16,23 +16,36 @@ SECRET_KEY = os.getenv("SECRET_KEY", 'ux*so-$u+7)w-dsxo3sfgfw7%97on86fb2&+#c4xv3
 
 DEBUG = os.getenv("DEBUG", "True") == "True"
 
-default_hosts = ["127.0.0.1", "localhost", "testserver"]
+default_hosts = [
+    "127.0.0.1",
+    "localhost",
+    "testserver",
+    "marlinosdiventures.com",
+    "www.marlinosdiventures.com",
+    "marlinos-diventures.onrender.com",
+]
 configured_hosts = [host.strip() for host in os.getenv("ALLOWED_HOSTS", "").split(",") if host.strip()]
 render_url = os.getenv("RENDER_EXTERNAL_URL", "").strip()
 if render_url:
     render_host = render_url.replace("https://", "").replace("http://", "").split("/", 1)[0]
     configured_hosts.extend([render_host, render_host.split(":", 1)[0]])
 
-ALLOWED_HOSTS = configured_hosts or default_hosts
-if not configured_hosts:
-    ALLOWED_HOSTS = ["marlinosdiventures.com","www.marlinosdiventures.com","marlinos-scuba.onrender.com","127.0.0.1","localhost"]
+ALLOWED_HOSTS = list(dict.fromkeys([*default_hosts, *configured_hosts]))
 
 csrf_origins = [origin.strip() for origin in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",") if origin.strip()]
 if not csrf_origins and render_url:
     csrf_origins.append(render_url)
 if not csrf_origins:
-    csrf_origins = ["http://localhost", "http://127.0.0.1", "https://localhost", "https://127.0.0.1"]
-CSRF_TRUSTED_ORIGINS = csrf_origins
+    csrf_origins = [
+        "http://localhost",
+        "http://127.0.0.1",
+        "https://localhost",
+        "https://127.0.0.1",
+        "https://marlinosdiventures.com",
+        "https://www.marlinosdiventures.com",
+        "https://marlinos-diventures.onrender.com",
+    ]
+CSRF_TRUSTED_ORIGINS = list(dict.fromkeys(csrf_origins))
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
@@ -41,7 +54,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
 DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", EMAIL_HOST_USER or "noreply@example.com")
-CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",") if origin.strip()]
 
 INSTALLED_APPS = [
     "django.contrib.admin",

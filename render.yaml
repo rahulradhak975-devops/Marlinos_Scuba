@@ -15,4 +15,6 @@ services:
       - key: DEBUG
         value: "False"
       - key: ALLOWED_HOSTS
-        value: marlinos-diventures.onrender.com
+        value: marlinos-diventures.onrender.com,marlinosdiventures.com,www.marlinosdiventures.com
+      - key: CSRF_TRUSTED_ORIGINS
+        value: https://marlinos-diventures.onrender.com,https://marlinosdiventures.com,https://www.marlinosdiventures.com
