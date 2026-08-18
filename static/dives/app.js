@@ -591,6 +591,23 @@ const lakshadweepSites = [
   }
 ];
 
+const excludedDiveSites = new Set([
+  'Kadmat Island',
+  'Minicoy Island',
+  'Kalpeni Island',
+  'Thinnakara Island',
+  'Andrott Island',
+  'Amini Island',
+  'Bitra Island',
+  'Chetlat Island'
+]);
+
+for (let index = lakshadweepSites.length - 1; index >= 0; index -= 1) {
+  if (excludedDiveSites.has(lakshadweepSites[index].name)) {
+    lakshadweepSites.splice(index, 1);
+  }
+}
+
 let activeFilter = 'all';
 let selectedSiteName = lakshadweepSites[0]?.name || '';
 
