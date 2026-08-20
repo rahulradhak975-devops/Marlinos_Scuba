@@ -281,7 +281,7 @@ def package_detail(request, package_name):
             "name": "Reef Explorer",
             "description": "A premium reef-focused island dive experience for certified divers.",
             "location": "Agatti · Kadmat · Bangaram",
-            "highlights": ["3-day island diving package", "Up to 4 dives daily", "Boat transfers and dive guide included"],
+            "highlights": ["3-day island diving package", "Boat transfers and dive guide included"],
             "price": "12000/- per person",
         },
         "island-adventure": {
