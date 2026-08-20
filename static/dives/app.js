@@ -838,27 +838,40 @@ window.initLakshadweepMap = function initLakshadweepMap() {
 
 function initLoader() {
   const loader = document.getElementById('loader');
+  const loaderProgress = document.getElementById('loaderProgress');
   if (!loader) return;
 
+  const minimumLoaderDuration = 5200;
+  const loaderStartedAt = performance.now();
+  const updateProgress = () => {
+    const elapsed = performance.now() - loaderStartedAt;
+    const progress = Math.min(99, Math.floor((elapsed / minimumLoaderDuration) * 100));
+    if (loaderProgress) loaderProgress.textContent = `${progress}%`;
+  };
+  const progressTimer = window.setInterval(updateProgress, 80);
   let completed = false;
   const finishLoader = () => {
     if (completed) return;
     completed = true;
+    const elapsed = performance.now() - loaderStartedAt;
+    const remainingTime = Math.max(0, minimumLoaderDuration - elapsed);
     window.setTimeout(() => {
+      window.clearInterval(progressTimer);
+      if (loaderProgress) loaderProgress.textContent = '100%';
       loader.classList.add('loader-done');
       window.setTimeout(() => {
         loader.style.display = 'none';
         loader.setAttribute('aria-hidden', 'true');
       }, 700);
       startCounters();
-    }, 2600);
+    }, remainingTime);
   };
 
   if (document.readyState === 'complete') {
     finishLoader();
   } else {
     window.addEventListener('load', finishLoader, { once: true });
-    window.setTimeout(finishLoader, 1800);
+    window.setTimeout(finishLoader, minimumLoaderDuration);
   }
 }
 

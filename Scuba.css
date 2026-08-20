@@ -235,13 +235,28 @@ select {
 }
 
 .loader-status {
-  margin: 24px 0 0;
+  width: min(86vw, 310px);
+  margin: 18px 0 0;
   color: var(--seafoam);
   font-family: 'Sora', sans-serif;
   font-size: 0.7rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   animation: loaderStatus 1.4s ease-in-out infinite;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.loader-brand {
+  margin: 22px 0 0;
+  color: var(--white);
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   z-index: 1;
 }
 
