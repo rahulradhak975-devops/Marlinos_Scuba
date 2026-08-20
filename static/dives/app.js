@@ -838,28 +838,10 @@ window.initLakshadweepMap = function initLakshadweepMap() {
 
 function initLoader() {
   const loader = document.getElementById('loader');
-  const loaderMessage = document.getElementById('loaderMessage');
   if (!loader) return;
 
   const loaderDuration = 5000;
-  const loadingStages = [
-    [0, 'Preparing your ocean adventure'],
-    [1250, 'Charting your dive sites'],
-    [2500, 'Checking the tides and currents'],
-    [3750, 'Fitting your adventure gear'],
-    [4750, 'Almost ready to dive']
-  ];
   const loaderStartedAt = performance.now();
-  const updateProgress = () => {
-    const elapsed = performance.now() - loaderStartedAt;
-    const currentStage = loadingStages.reduce((stage, candidate) => (
-      elapsed >= candidate[0] ? candidate : stage
-    ), loadingStages[0]);
-    if (loaderMessage && loaderMessage.textContent !== currentStage[1]) {
-      loaderMessage.textContent = currentStage[1];
-    }
-  };
-  const progressTimer = window.setInterval(updateProgress, 80);
   let completed = false;
   const finishLoader = () => {
     if (completed) return;
@@ -867,8 +849,6 @@ function initLoader() {
     const elapsed = performance.now() - loaderStartedAt;
     const remainingTime = Math.max(0, loaderDuration - elapsed);
     window.setTimeout(() => {
-      window.clearInterval(progressTimer);
-      if (loaderMessage) loaderMessage.textContent = 'Ready to dive';
       loader.classList.add('loader-done');
       window.setTimeout(() => {
         loader.style.display = 'none';

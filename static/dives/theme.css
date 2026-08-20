@@ -343,32 +343,6 @@ h6 {
   animation: loaderReveal 0.8s ease-out both;
 }
 
-.loader-status {
-  width: min(86vw, 310px);
-  margin: 18px 0 0;
-  color: var(--seafoam);
-  font-family: 'Sora', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  animation: loaderStatus 1.4s ease-in-out infinite;
-  z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.loader-brand {
-  margin: 22px 0 0;
-  color: var(--white);
-  font-family: 'Sora', sans-serif;
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  z-index: 1;
-}
-
 @keyframes loaderReveal {
   from { opacity: 0; transform: scale(0.72) rotate(-8deg); }
   to { opacity: 1; transform: scale(1) rotate(0); }
@@ -384,11 +358,6 @@ h6 {
   100% { opacity: 0; transform: scale(1.12); }
 }
 
-@keyframes loaderStatus {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
-
 @keyframes loaderCaustics {
   from { transform: translate3d(-3%, -2%, 0) rotate(-4deg); }
   to { transform: translate3d(3%, 5%, 0) rotate(4deg); }
@@ -402,7 +371,6 @@ h6 {
 @media (prefers-reduced-motion: reduce) {
   .loader-logo-wrap,
   .loader-logo-image,
-  .loader-status,
   #loader::before,
   #loader::after { animation: none; }
 }
