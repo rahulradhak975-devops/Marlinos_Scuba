@@ -838,30 +838,23 @@ window.initLakshadweepMap = function initLakshadweepMap() {
 
 function initLoader() {
   const loader = document.getElementById('loader');
-  const loaderProgress = document.getElementById('loaderProgress');
-  const loaderProgressBar = document.getElementById('loaderProgressBar');
-  const loaderProgressTrack = document.querySelector('.loader-progress');
   const loaderMessage = document.getElementById('loaderMessage');
   if (!loader) return;
 
-  const loaderDuration = 8000;
+  const loaderDuration = 5000;
   const loadingStages = [
     [0, 'Preparing your ocean adventure'],
-    [2000, 'Charting your dive sites'],
-    [4000, 'Checking the tides and currents'],
-    [6000, 'Fitting your adventure gear'],
-    [7600, 'Almost ready to dive']
+    [1250, 'Charting your dive sites'],
+    [2500, 'Checking the tides and currents'],
+    [3750, 'Fitting your adventure gear'],
+    [4750, 'Almost ready to dive']
   ];
   const loaderStartedAt = performance.now();
   const updateProgress = () => {
     const elapsed = performance.now() - loaderStartedAt;
-    const progress = Math.min(100, Math.floor((elapsed / loaderDuration) * 100));
     const currentStage = loadingStages.reduce((stage, candidate) => (
       elapsed >= candidate[0] ? candidate : stage
     ), loadingStages[0]);
-    if (loaderProgress) loaderProgress.textContent = `${progress}%`;
-    if (loaderProgressBar) loaderProgressBar.style.width = `${progress}%`;
-    if (loaderProgressTrack) loaderProgressTrack.setAttribute('aria-valuenow', progress);
     if (loaderMessage && loaderMessage.textContent !== currentStage[1]) {
       loaderMessage.textContent = currentStage[1];
     }
@@ -875,9 +868,6 @@ function initLoader() {
     const remainingTime = Math.max(0, loaderDuration - elapsed);
     window.setTimeout(() => {
       window.clearInterval(progressTimer);
-      if (loaderProgress) loaderProgress.textContent = '100%';
-      if (loaderProgressBar) loaderProgressBar.style.width = '100%';
-      if (loaderProgressTrack) loaderProgressTrack.setAttribute('aria-valuenow', '100');
       if (loaderMessage) loaderMessage.textContent = 'Ready to dive';
       loader.classList.add('loader-done');
       window.setTimeout(() => {
