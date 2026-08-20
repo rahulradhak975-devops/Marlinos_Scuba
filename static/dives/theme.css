@@ -3297,3 +3297,228 @@ section:not(#hero), footer { color: var(--white); }
   .page-shell > section:first-child:not(#hero) { padding-top: 92px; }
   #hero { padding: 76px 16px 100px; }
 }
+
+/* ─── MARLINOS ABYSS PALETTE ──────────────────── */
+:root {
+  --bg-primary: #071520;
+  --bg-surface: #0D2232;
+  --bg-surface-hover: #122B3F;
+  --glass-nav: rgba(7, 21, 32, 0.85);
+
+  --accent-cyan: #00C4D6;
+  --accent-teal: #48E5C2;
+
+  --text-heading: #F2EDE4;
+  --text-body: #94A8B8;
+  --text-muted: #5C7285;
+
+  --border-subtle: rgba(148, 168, 184, 0.15);
+  --focus-glow: rgba(0, 196, 214, 0.35);
+
+  /* Existing selectors resolve through these aliases, preserving the layout. */
+  --midnight: var(--bg-primary);
+  --deep: var(--bg-surface);
+  --teal: var(--accent-cyan);
+  --seafoam: var(--accent-teal);
+  --sand: var(--text-body);
+  --white: var(--text-heading);
+  --dim: var(--text-body);
+  --liquid-blue: var(--accent-cyan);
+  --glass: var(--glass-nav);
+}
+
+body {
+  color: var(--text-heading);
+  background: var(--bg-primary);
+}
+
+body::before {
+  background:
+    linear-gradient(180deg, rgba(7, 21, 32, 0.3), rgba(7, 21, 32, 0.9)),
+    url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1800&q=88') center/cover no-repeat;
+  filter: saturate(0.82) contrast(1.05) brightness(0.62);
+}
+
+body::after {
+  background:
+    radial-gradient(ellipse at 18% 8%, rgba(0, 196, 214, 0.12), transparent 32%),
+    radial-gradient(ellipse at 86% 48%, rgba(72, 229, 194, 0.08), transparent 34%),
+    linear-gradient(135deg, rgba(7, 21, 32, 0.08), rgba(7, 21, 32, 0.3));
+}
+
+nav,
+nav.scrolled {
+  background: var(--glass-nav);
+  border-bottom-color: var(--border-subtle);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(18px) saturate(1.2);
+}
+
+.nav-links {
+  background: rgba(13, 34, 50, 0.72);
+  border-color: var(--border-subtle);
+}
+
+.nav-links a,
+.footer-col a,
+.footer-brand p,
+.footer-contact,
+.section-sub,
+.service-copy p,
+.service-copy li,
+.service-detail-item p,
+.pkg-card p,
+.pkg-card li,
+.testi-card blockquote,
+.site-item p,
+.site-preview p,
+.booking-panel-sub {
+  color: var(--text-body);
+}
+
+h1, h2, h3, h4, h5, h6,
+.section-title,
+section:not(#hero) h2,
+section:not(#hero) h3,
+section:not(#hero) h4,
+section:not(#hero) h5,
+section:not(#hero) h6 {
+  color: var(--text-heading);
+}
+
+.section-eyebrow,
+.hero-eyebrow,
+.nav-logo span,
+.brand-name > span,
+.footer-col h5,
+.testi-meta,
+.site-item .site-depth,
+.loader-logo,
+.depth-label,
+.course-meta,
+.text-link,
+.instructor-specialties,
+.auth-switch a,
+.lakshadweep-card-subtitle,
+.lakshadweep-card-rating {
+  color: var(--accent-teal);
+}
+
+.hero-h1,
+.hero-h1 em,
+.hero-sub,
+.hero-stats,
+.hero-stat-label {
+  color: var(--text-heading);
+}
+
+.hero-h1 em { color: var(--accent-cyan); text-shadow: 0 0 42px rgba(0, 196, 214, 0.28); }
+
+.btn-primary,
+.premium-cta,
+.booking-panel button {
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+  box-shadow: 0 14px 32px rgba(0, 196, 214, 0.2);
+}
+
+.btn-primary:hover,
+.premium-cta:hover,
+.booking-panel button:hover {
+  background: var(--accent-teal);
+  color: var(--bg-primary);
+}
+
+.btn-outline {
+  color: var(--accent-cyan);
+  border-color: rgba(0, 196, 214, 0.48);
+  background: rgba(13, 34, 50, 0.46);
+}
+
+.btn-outline:hover,
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--bg-primary);
+  background: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.pkg-card,
+.testi-card,
+.service-segment,
+.detail-card,
+.site-preview,
+.site-item,
+.gallery-card,
+.booking-panel,
+.lakshadweep-toolbar,
+.lakshadweep-map-card,
+.lakshadweep-panel,
+.auth-panel {
+  color: var(--text-heading);
+  background: linear-gradient(145deg, rgba(13, 34, 50, 0.86), rgba(7, 21, 32, 0.92));
+  border-color: var(--border-subtle);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(242, 237, 228, 0.08);
+  backdrop-filter: blur(20px) saturate(1.15);
+}
+
+.pkg-card:hover,
+.testi-card:hover,
+.site-item:hover,
+.site-item.active,
+.pkg-card.featured {
+  border-color: var(--accent-teal);
+  background: var(--bg-surface-hover);
+}
+
+.pkg-badge,
+.filter-chip.active {
+  background: var(--accent-teal);
+  color: var(--bg-primary);
+}
+
+.booking-panel input,
+.booking-panel select,
+.booking-panel textarea,
+.auth-form input {
+  background: rgba(7, 21, 32, 0.72);
+  color: var(--text-heading);
+  border-color: var(--border-subtle);
+}
+
+.booking-panel input::placeholder,
+.booking-panel textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.booking-panel input:focus,
+.booking-panel select:focus,
+.booking-panel textarea:focus,
+.auth-form input:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 5px var(--focus-glow);
+  outline-color: var(--accent-cyan);
+}
+
+.filter-chip {
+  color: var(--text-body);
+  border-color: var(--border-subtle);
+  background: rgba(13, 34, 50, 0.72);
+}
+
+.booking-notice {
+  border-color: rgba(0, 196, 214, 0.3);
+  background: rgba(0, 196, 214, 0.1);
+  color: var(--accent-teal);
+}
+
+.footer-bottom { border-top-color: var(--border-subtle); }
+.footer-bottom p { color: var(--text-muted); }
+#cta-banner { background: var(--bg-primary); }
+
+.service-segment::before,
+.booking-panel::before,
+.pkg-card::before,
+.testi-card::before {
+  background: linear-gradient(112deg, transparent 24%, rgba(0, 196, 214, 0.08) 45%, transparent 62%);
+}
