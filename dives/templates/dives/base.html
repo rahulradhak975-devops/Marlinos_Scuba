@@ -12,21 +12,10 @@
 </head>
 <body>
   <div id="loader">
-    <div id="bubbles-loader"></div>
-    <div class="loader-logo">Marlinos Diventures.</div>
-    <div>
-      <div class="depth-gauge">
-        <div class="gauge-marks">
-          <div class="gauge-mark"></div>
-          <div class="gauge-mark"></div>
-          <div class="gauge-mark"></div>
-          <div class="gauge-mark"></div>
-          <div class="gauge-mark"></div>
-        </div>
-      </div>
-      <div class="depth-label" style="margin-top: 10px;">Depth</div>
+    <div class="loader-logo-wrap">
+      <img class="loader-logo-image" src="{% static 'dives/marlinos-loader-logo.png' %}" alt="Marlinos Diventures logo" />
     </div>
-    <div class="loader-depth-num" id="loaderNum">0 <span>m</span></div>
+    <p class="loader-status">Preparing your dive...</p>
   </div>
 
   <nav id="navbar">

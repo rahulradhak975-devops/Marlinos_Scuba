@@ -838,39 +838,12 @@ window.initLakshadweepMap = function initLakshadweepMap() {
 
 function initLoader() {
   const loader = document.getElementById('loader');
-  const loaderBubblesCont = document.getElementById('bubbles-loader');
-  const loaderNum = document.getElementById('loaderNum');
-  if (!loader || !loaderBubblesCont || !loaderNum) return;
-
-  for (let i = 0; i < 18; i += 1) {
-    const bubble = document.createElement('div');
-    bubble.className = 'lb';
-    const size = 4 + Math.random() * 14;
-    bubble.style.cssText = `
-      width: ${size}px;
-      height: ${size}px;
-      left: ${Math.random() * 100}%;
-      animation-duration: ${3 + Math.random() * 5}s;
-      animation-delay: ${Math.random() * 4}s;
-      opacity: ${0.3 + Math.random() * 0.5};
-    `;
-    loaderBubblesCont.appendChild(bubble);
-  }
-
-  let depth = 0;
-  const targetDepth = 40;
-  const depthInterval = setInterval(() => {
-    depth += 1;
-    loaderNum.innerHTML = `${depth} <span>m</span>`;
-    if (depth >= targetDepth) clearInterval(depthInterval);
-  }, 60);
+  if (!loader) return;
 
   let completed = false;
   const finishLoader = () => {
     if (completed) return;
     completed = true;
-    clearInterval(depthInterval);
-    loaderNum.innerHTML = `${targetDepth} <span>m</span>`;
     window.setTimeout(() => {
       loader.classList.add('loader-done');
       window.setTimeout(() => {
@@ -878,14 +851,14 @@ function initLoader() {
         loader.setAttribute('aria-hidden', 'true');
       }, 700);
       startCounters();
-    }, 2200);
+    }, 800);
   };
 
   if (document.readyState === 'complete') {
     finishLoader();
   } else {
     window.addEventListener('load', finishLoader, { once: true });
-    window.setTimeout(finishLoader, 2800);
+    window.setTimeout(finishLoader, 1800);
   }
 }
 
