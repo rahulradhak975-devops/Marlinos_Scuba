@@ -592,7 +592,6 @@ const lakshadweepSites = [
 ];
 
 const excludedDiveSites = new Set([
-  'Kadmat Island',
   'Minicoy Island',
   'Kalpeni Island',
   'Thinnakara Island',
