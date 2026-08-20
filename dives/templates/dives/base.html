@@ -26,10 +26,17 @@
       <a href="{% url 'home' %}">Home</a>
       <a href="{% url 'about' %}">About</a>
       <a href="{% url 'services' %}">Services</a>
+      <a href="{% url 'courses' %}">Courses</a>
+      <a href="{% url 'instructors' %}">Instructors</a>
       <a href="{% url 'gallery' %}">Gallery</a>
       <a href="{% url 'faq' %}">FAQ</a>
       <a href="{% url 'contact' %}">Contact</a>
       <a href="{% url 'booking' %}" class="nav-cta">Reserve</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Sign out</a>
+      {% else %}
+        <a href="{% url 'login' %}">Sign in</a>
+      {% endif %}
     </div>
     <button class="nav-toggle" type="button" aria-label="Open navigation">
       <span></span>

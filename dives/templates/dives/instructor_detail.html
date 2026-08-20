@@ -1,0 +1,8 @@
+{% extends "dives/base.html" %}
+
+{% block title %}{{ instructor.name }} | Marlinos Diventures{% endblock %}
+
+{% block content %}
+<section class="profile-hero"><img src="{{ instructor.image_url }}" alt="{{ instructor.name }}"><div><p class="section-eyebrow">{{ instructor.role }}</p><h1 class="section-title">{{ instructor.name }}</h1><p class="section-sub">{{ instructor.bio }}</p><p class="instructor-specialties">{{ instructor.specialties }}</p><a class="btn-primary" href="{% url 'booking' %}">Plan a course</a></div></section>
+<section class="profile-note"><p class="section-eyebrow">Teaching philosophy</p><h2>Good instruction gives you more freedom underwater.</h2><p>Sessions are structured, unhurried, and adapted to the person in front of us. You will always know what we are practising, why it matters, and how to carry it into your next dive.</p></section>
+{% endblock %}

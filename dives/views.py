@@ -16,6 +16,8 @@ except ImportError:  # pragma: no cover - fallback for environments without pyth
 
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.views.decorators.csrf import csrf_exempt
 import hmac
 import hashlib
@@ -31,6 +33,51 @@ load_dotenv(BASE_DIR / ".env")
 logger = logging.getLogger(__name__)
 LAST_WHATSAPP_ERROR = None
 LAST_WHATSAPP_RESPONSE = None
+
+COURSES = [
+    {
+        "slug": "open-water-diver",
+        "title": "Open Water Diver",
+        "eyebrow": "Start here",
+        "summary": "Build calm, capable foundations for a lifetime of independent recreational diving.",
+        "description": "A guided certification journey that combines flexible theory, pool skills, and open-water practice in the clear lagoons of Lakshadweep.",
+        "level": "Beginner",
+        "duration": "4 days",
+        "lessons": "12 lessons",
+        "image_url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=85",
+        "modules": ["Equipment and dive planning", "Breathing, buoyancy, and trim", "Emergency response fundamentals", "Four supervised open-water dives"],
+    },
+    {
+        "slug": "advanced-open-water",
+        "title": "Advanced Open Water",
+        "eyebrow": "Go further",
+        "summary": "Expand your range, confidence, and decision-making across new underwater environments.",
+        "description": "Choose from deep, navigation, night, and buoyancy adventures while learning to plan richer dives with an experienced instructor beside you.",
+        "level": "Intermediate",
+        "duration": "3 days",
+        "lessons": "8 lessons",
+        "image_url": "https://images.unsplash.com/photo-1546500840-ae38253aba9b?auto=format&fit=crop&w=1200&q=85",
+        "modules": ["Advanced navigation", "Deep dive planning", "Night and low-light techniques", "Peak performance buoyancy"],
+    },
+    {
+        "slug": "rescue-diver",
+        "title": "Rescue Diver",
+        "eyebrow": "Lead with confidence",
+        "summary": "Sharpen awareness, prevention, and response skills for safer, more capable dive teams.",
+        "description": "A practical, scenario-led course for certified divers ready to expand their responsibility and become a stronger partner in the water.",
+        "level": "Advanced",
+        "duration": "5 days",
+        "lessons": "10 lessons",
+        "image_url": "https://images.unsplash.com/photo-1544550285-f813152fb2fd?auto=format&fit=crop&w=1200&q=85",
+        "modules": ["Self-rescue review", "Recognising diver stress", "Surface and underwater response", "Full rescue scenarios and debriefs"],
+    },
+]
+
+INSTRUCTORS = [
+    {"name": "Arjun Menon", "role": "Lead Instructor & Course Director", "bio": "A patient, detail-focused educator who makes every skill feel achievable and every briefing purposeful.", "specialties": "Open Water · Rescue · First Aid", "image_url": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=85"},
+    {"name": "Maya Thomas", "role": "Marine Educator & Dive Guide", "bio": "Maya brings a warm teaching style and a deep knowledge of reef ecology to every island session.", "specialties": "Advanced · Night Diving · Marine Life", "image_url": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=700&q=85"},
+    {"name": "Nikhil Rao", "role": "Technical & Safety Instructor", "bio": "Known for precise planning and calm decision-making, Nikhil helps experienced divers expand their limits responsibly.", "specialties": "Rescue · Deep Diving · Navigation", "image_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85"},
+]
 
 
 def home(request):
@@ -138,6 +185,50 @@ def sites(request):
 
 def stories(request):
     return redirect("/#testimonials")
+
+
+def courses(request):
+    return render(request, "dives/courses.html", {"courses": COURSES})
+
+
+def course_detail(request, slug):
+    course = next((course for course in COURSES if course["slug"] == slug), None)
+    if not course:
+        return redirect("courses")
+    return render(request, "dives/course_detail.html", {"course": course})
+
+
+def instructors(request):
+    return render(request, "dives/instructors.html", {"instructors": INSTRUCTORS})
+
+
+def instructor_detail(request, name):
+    instructor = next((person for person in INSTRUCTORS if person["name"].lower().replace(" ", "-") == name), None)
+    if not instructor:
+        return redirect("instructors")
+    return render(request, "dives/instructor_detail.html", {"instructor": instructor})
+
+
+def login_view(request):
+    form = AuthenticationForm(request, data=request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        login(request, form.get_user())
+        return redirect(request.GET.get("next") or "courses")
+    return render(request, "dives/login.html", {"form": form})
+
+
+def register(request):
+    form = UserCreationForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        user = form.save()
+        login(request, user)
+        return redirect("courses")
+    return render(request, "dives/register.html", {"form": form})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect("home")
 
 
 def booking(request):

@@ -1,0 +1,8 @@
+{% extends "dives/base.html" %}
+
+{% block title %}Instructors | Marlinos Diventures{% endblock %}
+
+{% block content %}
+<section class="page-hero learning-hero"><p class="section-eyebrow">Your dive team</p><h1 class="section-title">Meet the people behind the calm.</h1><p class="section-sub">Every instructor brings technical discipline, local knowledge, and a genuine love of helping divers feel at home underwater.</p></section>
+<section class="learning-section"><div class="instructor-grid">{% for instructor in instructors %}<article class="instructor-card"><img src="{{ instructor.image_url }}" alt="{{ instructor.name }}"><div><p class="section-eyebrow">{{ instructor.role }}</p><h2><a href="{% url 'instructor_detail' instructor.name|slugify %}">{{ instructor.name }}</a></h2><p>{{ instructor.bio }}</p><p class="instructor-specialties">{{ instructor.specialties }}</p><a class="text-link" href="{% url 'instructor_detail' instructor.name|slugify %}">View profile <span aria-hidden="true">→</span></a></div></article>{% endfor %}</div></section>
+{% endblock %}

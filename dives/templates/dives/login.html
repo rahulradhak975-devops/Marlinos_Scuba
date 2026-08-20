@@ -1,0 +1,7 @@
+{% extends "dives/base.html" %}
+
+{% block title %}Sign In | Marlinos Diventures{% endblock %}
+
+{% block content %}
+<section class="auth-shell"><div class="auth-panel"><p class="section-eyebrow">Marlinos Academy</p><h1>Welcome back.</h1><p class="auth-intro">Sign in to keep your course plans and dive learning in one place.</p><form method="post" class="auth-form">{% csrf_token %}{{ form.non_field_errors }}{% for field in form %}<label for="{{ field.id_for_label }}">{{ field.label }}{{ field }}{% for error in field.errors %}<small class="field-error">{{ error }}</small>{% endfor %}</label>{% endfor %}<button class="btn-primary" type="submit">Sign in</button></form><p class="auth-switch">New to Marlinos? <a href="{% url 'register' %}">Create an account</a></p></div></section>
+{% endblock %}

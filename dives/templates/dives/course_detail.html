@@ -1,0 +1,14 @@
+{% extends "dives/base.html" %}
+
+{% block title %}{{ course.title }} | Marlinos Academy{% endblock %}
+
+{% block content %}
+<section class="course-detail-hero">
+  <div class="course-detail-copy"><p class="section-eyebrow">{{ course.eyebrow }} · {{ course.level }}</p><h1 class="section-title">{{ course.title }}</h1><p class="section-sub">{{ course.description }}</p><a class="btn-primary" href="{% url 'booking' %}">Ask about this course</a></div>
+  <img src="{{ course.image_url }}" alt="{{ course.title }} training session">
+</section>
+<section class="course-detail-layout">
+  <div><p class="section-eyebrow">What you will learn</p><h2>A steady route to better diving.</h2><ul class="course-module-list">{% for module in course.modules %}<li><span>0{{ forloop.counter }}</span>{{ module }}</li>{% endfor %}</ul></div>
+  <aside class="course-facts"><p class="section-eyebrow">Course facts</p><div><strong>{{ course.duration }}</strong><span>on the island</span></div><div><strong>{{ course.lessons }}</strong><span>guided learning</span></div><div><strong>{{ course.level }}</strong><span>experience level</span></div><a class="btn-outline" href="{% url 'courses' %}">All courses</a></aside>
+</section>
+{% endblock %}
