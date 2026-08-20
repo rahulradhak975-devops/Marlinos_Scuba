@@ -839,14 +839,32 @@ window.initLakshadweepMap = function initLakshadweepMap() {
 function initLoader() {
   const loader = document.getElementById('loader');
   const loaderProgress = document.getElementById('loaderProgress');
+  const loaderProgressBar = document.getElementById('loaderProgressBar');
+  const loaderProgressTrack = document.querySelector('.loader-progress');
+  const loaderMessage = document.getElementById('loaderMessage');
   if (!loader) return;
 
-  const minimumLoaderDuration = 5200;
+  const loaderDuration = 8000;
+  const loadingStages = [
+    [0, 'Preparing your ocean adventure'],
+    [2000, 'Charting your dive sites'],
+    [4000, 'Checking the tides and currents'],
+    [6000, 'Fitting your adventure gear'],
+    [7600, 'Almost ready to dive']
+  ];
   const loaderStartedAt = performance.now();
   const updateProgress = () => {
     const elapsed = performance.now() - loaderStartedAt;
-    const progress = Math.min(99, Math.floor((elapsed / minimumLoaderDuration) * 100));
+    const progress = Math.min(100, Math.floor((elapsed / loaderDuration) * 100));
+    const currentStage = loadingStages.reduce((stage, candidate) => (
+      elapsed >= candidate[0] ? candidate : stage
+    ), loadingStages[0]);
     if (loaderProgress) loaderProgress.textContent = `${progress}%`;
+    if (loaderProgressBar) loaderProgressBar.style.width = `${progress}%`;
+    if (loaderProgressTrack) loaderProgressTrack.setAttribute('aria-valuenow', progress);
+    if (loaderMessage && loaderMessage.textContent !== currentStage[1]) {
+      loaderMessage.textContent = currentStage[1];
+    }
   };
   const progressTimer = window.setInterval(updateProgress, 80);
   let completed = false;
@@ -854,10 +872,13 @@ function initLoader() {
     if (completed) return;
     completed = true;
     const elapsed = performance.now() - loaderStartedAt;
-    const remainingTime = Math.max(0, minimumLoaderDuration - elapsed);
+    const remainingTime = Math.max(0, loaderDuration - elapsed);
     window.setTimeout(() => {
       window.clearInterval(progressTimer);
       if (loaderProgress) loaderProgress.textContent = '100%';
+      if (loaderProgressBar) loaderProgressBar.style.width = '100%';
+      if (loaderProgressTrack) loaderProgressTrack.setAttribute('aria-valuenow', '100');
+      if (loaderMessage) loaderMessage.textContent = 'Ready to dive';
       loader.classList.add('loader-done');
       window.setTimeout(() => {
         loader.style.display = 'none';
@@ -871,7 +892,7 @@ function initLoader() {
     finishLoader();
   } else {
     window.addEventListener('load', finishLoader, { once: true });
-    window.setTimeout(finishLoader, minimumLoaderDuration);
+    window.setTimeout(finishLoader, loaderDuration);
   }
 }
 

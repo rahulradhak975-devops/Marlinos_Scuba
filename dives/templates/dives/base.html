@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{% static 'dives/theme.css' %}?v=8" />
+  <link rel="stylesheet" href="{% static 'dives/theme.css' %}?v=9" />
 </head>
 <body>
   <div id="loader">
@@ -16,7 +16,10 @@
       <img class="loader-logo-image" src="{% static 'dives/marlinos-loader-logo.png' %}" alt="Marlinos Diventures logo" />
     </div>
     <p class="loader-brand">Marlinos Diventures</p>
-    <p class="loader-status"><span>Loading your ocean adventure</span><span id="loaderProgress">0%</span></p>
+    <p class="loader-status" aria-live="polite"><span id="loaderMessage">Preparing your ocean adventure</span><span id="loaderProgress">0%</span></p>
+    <div class="loader-progress" role="progressbar" aria-label="Loading Marlinos Diventures" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <span id="loaderProgressBar"></span>
+    </div>
   </div>
 
   <nav id="navbar">
@@ -79,27 +82,6 @@
     </div>
   </footer>
 
-  <script>
-    (function () {
-      const loader = document.getElementById('loader');
-      if (!loader) return;
-
-      const finishLoader = () => {
-        loader.classList.add('loader-done');
-        window.setTimeout(() => {
-          loader.style.display = 'none';
-          loader.setAttribute('aria-hidden', 'true');
-        }, 700);
-      };
-
-      if (document.readyState === 'complete') {
-        window.setTimeout(finishLoader, 400);
-      } else {
-        window.addEventListener('load', () => window.setTimeout(finishLoader, 300), { once: true });
-        window.setTimeout(finishLoader, 900);
-      }
-    })();
-  </script>
-  <script defer src="{% static 'dives/app.js' %}?v=5"></script>
+  <script defer src="{% static 'dives/app.js' %}?v=6"></script>
 </body>
 </html>
