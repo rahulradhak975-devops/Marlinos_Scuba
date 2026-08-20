@@ -40,6 +40,16 @@ body {
   position: relative;
 }
 
+#ocean-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  opacity: 0.78;
+}
+
 img, svg, video, iframe {
   max-width: 100%;
   height: auto;

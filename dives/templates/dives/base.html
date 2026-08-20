@@ -8,9 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{% static 'dives/theme.css' %}?v=15" />
+  <link rel="stylesheet" href="{% static 'dives/theme.css' %}?v=16" />
 </head>
 <body>
+  <canvas id="ocean-canvas" aria-hidden="true"></canvas>
   <nav id="navbar">
     <a href="{% url 'home' %}" class="nav-logo" aria-label="Marlinos Diventures home">
       <img class="brand-mark" src="{% static 'dives/marlinos-logo.png' %}" alt="" width="48" height="48" />
@@ -75,6 +76,6 @@
     </div>
   </footer>
 
-  <script defer src="{% static 'dives/app.js' %}?v=6"></script>
+  <script defer src="{% static 'dives/app.js' %}?v=7"></script>
 </body>
 </html>

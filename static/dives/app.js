@@ -5,6 +5,112 @@ const cursorOutline = document.querySelector('.cursor-outline');
 const interactiveSelectors = 'a, button, input, select, textarea, .btn-primary, .btn-outline, .pkg-book, .faq-toggle, .whatsapp-float';
 let cursorVisible = true;
 
+function startOceanCanvas() {
+  const canvas = document.getElementById('ocean-canvas');
+  if (!canvas) return;
+
+  const context = canvas.getContext('2d', { alpha: true });
+  if (!context) return;
+
+  const palette = ['#002b4d', '#0077b6', '#00b4d8', '#90e0ef'];
+  const waves = [
+    { amplitude: 22, length: 0.010, speed: 0.0008, baseline: 0.56, color: palette[0], alpha: 0.54, phase: 0.2 },
+    { amplitude: 18, length: 0.014, speed: 0.0011, baseline: 0.66, color: palette[1], alpha: 0.32, phase: 1.7 },
+    { amplitude: 14, length: 0.019, speed: 0.0015, baseline: 0.76, color: palette[2], alpha: 0.24, phase: 3.1 },
+    { amplitude: 10, length: 0.026, speed: 0.0019, baseline: 0.86, color: palette[3], alpha: 0.18, phase: 4.4 }
+  ];
+  const pointer = { x: -1000, y: -1000, targetX: -1000, targetY: -1000, active: false };
+  const ripples = [];
+  let width = 0;
+  let height = 0;
+  let resizeTimer = 0;
+  let lastRippleAt = 0;
+
+  const resize = () => {
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = Math.floor(width * pixelRatio);
+    canvas.height = Math.floor(height * pixelRatio);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+  };
+
+  const scheduleResize = () => {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(resize, 120);
+  };
+
+  const trackPointer = (event) => {
+    pointer.targetX = event.clientX;
+    pointer.targetY = event.clientY;
+    pointer.active = true;
+    const now = performance.now();
+    if (now - lastRippleAt > 90) {
+      ripples.push({ x: event.clientX, y: event.clientY, age: 0, strength: 1 });
+      if (ripples.length > 12) ripples.shift();
+      lastRippleAt = now;
+    }
+  };
+
+  const draw = (time) => {
+    context.clearRect(0, 0, width, height);
+    pointer.x += (pointer.targetX - pointer.x) * 0.08;
+    pointer.y += (pointer.targetY - pointer.y) * 0.08;
+
+    const waterGlow = context.createLinearGradient(0, height * 0.45, 0, height);
+    waterGlow.addColorStop(0, 'rgba(0, 43, 77, 0.02)');
+    waterGlow.addColorStop(1, 'rgba(0, 119, 182, 0.2)');
+    context.fillStyle = waterGlow;
+    context.fillRect(0, height * 0.42, width, height * 0.58);
+
+    waves.forEach((wave) => {
+      context.beginPath();
+      for (let x = -20; x <= width + 20; x += 8) {
+        const baseY = height * wave.baseline;
+        const rolling = Math.sin(x * wave.length + time * wave.speed + wave.phase) * wave.amplitude;
+        const secondary = Math.sin(x * wave.length * 0.43 - time * wave.speed * 0.7) * wave.amplitude * 0.34;
+        const distance = Math.hypot(x - pointer.x, baseY - pointer.y);
+        const influence = pointer.active ? Math.max(0, 1 - distance / 220) : 0;
+        const disturbance = Math.sin(distance * 0.12 - time * 0.006) * influence * 18;
+        const y = baseY + rolling + secondary - disturbance;
+        if (x === -20) context.moveTo(x, y);
+        else context.lineTo(x, y);
+      }
+      context.lineTo(width + 20, height);
+      context.lineTo(-20, height);
+      context.closePath();
+      context.fillStyle = wave.color;
+      context.globalAlpha = wave.alpha;
+      context.fill();
+    });
+
+    context.globalAlpha = 1;
+    ripples.forEach((ripple, index) => {
+      ripple.age += 1;
+      const radius = ripple.age * 2.8;
+      const opacity = Math.max(0, 0.22 * (1 - ripple.age / 65));
+      if (opacity <= 0) return;
+      context.beginPath();
+      context.ellipse(ripple.x, ripple.y, radius * 1.8, radius * 0.55, 0, 0, Math.PI * 2);
+      context.strokeStyle = `rgba(144, 224, 239, ${opacity})`;
+      context.lineWidth = 1.5;
+      context.stroke();
+      if (ripple.age > 65) ripples.splice(index, 1);
+    });
+
+    context.globalAlpha = 1;
+    window.requestAnimationFrame(draw);
+  };
+
+  resize();
+  window.addEventListener('resize', scheduleResize, { passive: true });
+  window.addEventListener('mousemove', trackPointer, { passive: true });
+  window.addEventListener('mouseleave', () => { pointer.active = false; }, { passive: true });
+  window.requestAnimationFrame(draw);
+}
+
 function openWhatsApp(message) {
   const url = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
@@ -837,6 +943,7 @@ window.initLakshadweepMap = function initLakshadweepMap() {
 };
 
 function init() {
+  startOceanCanvas();
   initHeroVideo();
   initLakshadweepExplorer();
   startRevealObserver();
