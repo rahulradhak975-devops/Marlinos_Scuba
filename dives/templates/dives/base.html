@@ -31,7 +31,6 @@
       <a href="{% url 'gallery' %}">Gallery</a>
       <a href="{% url 'faq' %}">FAQ</a>
       <a href="{% url 'contact' %}">Contact</a>
-      <a href="{% url 'booking' %}" class="nav-cta">Reserve</a>
       {% if user.is_authenticated %}
         <a href="{% url 'logout' %}">Sign out</a>
       {% else %}
