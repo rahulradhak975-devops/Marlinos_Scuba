@@ -851,7 +851,7 @@ function initLoader() {
         loader.setAttribute('aria-hidden', 'true');
       }, 700);
       startCounters();
-    }, 800);
+    }, 2600);
   };
 
   if (document.readyState === 'complete') {

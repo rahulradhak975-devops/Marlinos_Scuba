@@ -152,7 +152,10 @@ select {
   position: fixed;
   inset: 0;
   z-index: 100100;
-  background: var(--midnight);
+  background:
+    radial-gradient(circle at 50% 20%, rgba(28, 153, 219, 0.28), transparent 34%),
+    radial-gradient(circle at 12% 88%, rgba(0, 201, 177, 0.16), transparent 32%),
+    linear-gradient(145deg, #021326 0%, var(--midnight) 52%, #03283b 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -160,6 +163,35 @@ select {
   gap: 32px;
   opacity: 1;
   visibility: visible;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+#loader::before,
+#loader::after {
+  content: '';
+  position: absolute;
+  inset: -25%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#loader::before {
+  background:
+    repeating-radial-gradient(ellipse at 50% 0%, rgba(166, 241, 255, 0.13) 0 1px, transparent 2px 46px),
+    linear-gradient(112deg, transparent 28%, rgba(133, 227, 255, 0.08) 44%, transparent 58%);
+  animation: loaderCaustics 7s linear infinite;
+}
+
+#loader::after {
+  background-image:
+    radial-gradient(circle, rgba(184, 249, 255, 0.55) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(124, 231, 255, 0.42) 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(197, 252, 255, 0.28) 0 1px, transparent 2px);
+  background-position: 15% 105%, 68% 112%, 86% 102%;
+  background-size: 120px 180px, 180px 240px, 90px 150px;
+  background-repeat: repeat;
+  animation: loaderBubbles 9s linear infinite;
 }
 
 .loader-logo {
@@ -179,6 +211,7 @@ select {
   place-items: center;
   position: relative;
   animation: loaderBob 1.8s ease-in-out infinite;
+  z-index: 1;
 }
 
 .loader-logo-wrap::before,
@@ -209,6 +242,7 @@ select {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   animation: loaderStatus 1.4s ease-in-out infinite;
+  z-index: 1;
 }
 
 @keyframes loaderReveal {
@@ -229,6 +263,24 @@ select {
 @keyframes loaderStatus {
   0%, 100% { opacity: 0.5; }
   50% { opacity: 1; }
+}
+
+@keyframes loaderCaustics {
+  from { transform: translate3d(-3%, -2%, 0) rotate(-4deg); }
+  to { transform: translate3d(3%, 5%, 0) rotate(4deg); }
+}
+
+@keyframes loaderBubbles {
+  from { transform: translateY(16%); }
+  to { transform: translateY(-16%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-logo-wrap,
+  .loader-logo-image,
+  .loader-status,
+  #loader::before,
+  #loader::after { animation: none; }
 }
 
 .depth-gauge {
