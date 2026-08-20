@@ -397,8 +397,8 @@ h6 {
 :root {
   --midnight: #071a3d;
   --deep: #0b2d60;
-  --teal: #d4eb19;
-  --seafoam: #d4eb19;
+  --teal: #1c83b5;
+  --seafoam: #a8d8e8;
   --sand: #e6eef2;
   --white: #ffffff;
   --dim: rgba(7, 26, 61, 0.68);
@@ -479,7 +479,7 @@ section:not(#hero), footer { color: var(--midnight); }
 .pkg-badge { background: var(--teal); color: var(--midnight); }
 .pkg-card:hover, .testi-card:hover { border-color: var(--teal); }
 
-.service-segment::before, .booking-panel::before, .pkg-card::before, .testi-card::before { background: linear-gradient(112deg, transparent 24%, rgba(212, 235, 25, 0.14) 45%, transparent 62%); }
+.service-segment::before, .booking-panel::before, .pkg-card::before, .testi-card::before { background: linear-gradient(112deg, transparent 24%, rgba(145, 208, 231, 0.12) 45%, transparent 62%); }
 .footer-col h5, .footer-col a:hover, .testi-meta, .site-item .site-depth { color: #6e8000; }
 .footer-bottom { border-top-color: rgba(7, 26, 61, 0.14); }
 .footer-bottom p { color: rgba(7, 26, 61, 0.48); }
@@ -491,7 +491,7 @@ section:not(#hero), footer { color: var(--midnight); }
 }
 .booking-panel input::placeholder, .booking-panel textarea::placeholder { color: rgba(7, 26, 61, 0.48); }
 .booking-panel select { color: var(--midnight); }
-.booking-panel input:focus, .booking-panel select:focus, .booking-panel textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 5px rgba(212, 235, 25, 0.2); }
+.booking-panel input:focus, .booking-panel select:focus, .booking-panel textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 5px rgba(28, 131, 181, 0.2); }
 
 .lakshadweep-map { background: linear-gradient(145deg, #d7eaf0, #aacddc); }
 .lakshadweep-map-fallback-card, .lakshadweep-card-meta { background: rgba(255, 255, 255, 0.56); border-color: rgba(7, 26, 61, 0.1); }
@@ -3225,12 +3225,12 @@ footer {
 :root {
   --midnight: #02070d;
   --deep: #061b2b;
-  --teal: #19e0c5;
-  --seafoam: #9affed;
-  --sand: #8bb9c2;
+  --teal: #1c83b5;
+  --seafoam: #a8d8e8;
+  --sand: #7899aa;
   --white: #f4fbff;
   --dim: rgba(222, 245, 250, 0.68);
-  --liquid-blue: #087fa8;
+  --liquid-blue: #125f91;
   --glass: rgba(7, 38, 57, 0.62);
 }
 
@@ -3243,8 +3243,8 @@ body::before {
 }
 body::after {
   background:
-    radial-gradient(ellipse at 18% 8%, rgba(25, 224, 197, 0.17), transparent 30%),
-    radial-gradient(ellipse at 85% 48%, rgba(0, 121, 174, 0.2), transparent 34%),
+    radial-gradient(ellipse at 18% 8%, rgba(39, 137, 183, 0.18), transparent 30%),
+    radial-gradient(ellipse at 85% 48%, rgba(0, 87, 153, 0.24), transparent 34%),
     linear-gradient(135deg, rgba(0, 21, 35, 0.12), rgba(2, 7, 14, 0.22));
 }
 
@@ -3254,20 +3254,34 @@ section:not(#hero), footer { color: var(--white); }
 .pkg-card, .testi-card, .service-segment, .detail-card, .site-preview, .site-item, .gallery-card, .booking-panel, .lakshadweep-toolbar, .lakshadweep-map-card, .lakshadweep-panel {
   color: var(--white);
   background: linear-gradient(145deg, rgba(8, 54, 73, 0.68), rgba(2, 15, 27, 0.78));
-  border-color: rgba(154, 255, 237, 0.18);
+  border-color: rgba(145, 208, 231, 0.2);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(190, 255, 250, 0.12);
   backdrop-filter: blur(22px) saturate(1.25);
 }
 .pkg-card.featured { background: linear-gradient(145deg, rgba(8, 73, 87, 0.78), rgba(2, 20, 32, 0.84)); border-color: var(--teal); }
 .pkg-card:hover, .testi-card:hover { border-color: var(--teal); }
 .pkg-badge, .btn-primary, .premium-cta, .booking-panel button { background: var(--teal); color: #02070d; }
-.btn-outline { color: var(--seafoam); border-color: rgba(154, 255, 237, 0.42); background: rgba(7, 38, 57, 0.44); }
+.btn-outline { color: var(--seafoam); border-color: rgba(145, 208, 231, 0.46); background: rgba(7, 38, 57, 0.44); }
 .btn-outline:hover { color: #02070d; background: var(--teal); border-color: var(--teal); }
-.booking-panel input, .booking-panel select, .booking-panel textarea { background: rgba(2, 14, 25, 0.58); color: var(--white); border-color: rgba(154, 255, 237, 0.2); }
+.booking-panel input, .booking-panel select, .booking-panel textarea { background: rgba(2, 14, 25, 0.58); color: var(--white); border-color: rgba(145, 208, 231, 0.24); }
 .booking-panel input::placeholder, .booking-panel textarea::placeholder { color: rgba(222, 245, 250, 0.5); }
-.filter-chip { color: var(--white); border-color: rgba(154, 255, 237, 0.22); background: rgba(7, 38, 57, 0.46); }
+.filter-chip { color: var(--white); border-color: rgba(145, 208, 231, 0.24); background: rgba(7, 38, 57, 0.46); }
 .filter-chip.active { background: var(--teal); color: #02070d; }
 #cta-banner { background: #02070d; }
+
+/* Blue-only finishing pass for legacy accents and liquid details. */
+.nav-logo span, .brand-name > span, .section-eyebrow, .hero-eyebrow,
+.footer-col h5, .footer-col a:hover, .testi-meta, .site-item .site-depth,
+.loader-logo, .depth-label, .course-meta, .text-link, .instructor-specialties,
+.auth-switch a, .lakshadweep-card-subtitle, .lakshadweep-card-rating { color: var(--seafoam); }
+.nav-links a:hover, .nav-links a.active { color: #02070d; background: var(--teal); }
+.nav-links, .filter-chip, .lakshadweep-toolbar { border-color: rgba(145, 208, 231, 0.24); }
+.btn-primary, .premium-cta, .booking-panel button, .pkg-badge, .filter-chip.active { background: var(--teal); color: #02070d; }
+.btn-primary:hover, .premium-cta:hover, .booking-panel button:hover { background: #2b9bc9; color: #02070d; }
+.booking-notice { border-color: rgba(28, 131, 181, 0.4); background: rgba(28, 131, 181, 0.16); color: var(--seafoam); }
+.bubble { background: radial-gradient(circle at 35% 35%, rgba(168, 216, 232, 0.42), rgba(28, 131, 181, 0.12)); border-color: rgba(145, 208, 231, 0.32); }
+.site-item:hover, .site-item.active, .lakshadweep-site-list button:hover, .lakshadweep-site-list button.active { border-color: rgba(145, 208, 231, 0.42); background: rgba(28, 131, 181, 0.14); }
+.service-segment::before, .booking-panel::before, .pkg-card::before, .testi-card::before { background: linear-gradient(112deg, transparent 24%, rgba(145, 208, 231, 0.1) 45%, transparent 62%); }
 
 @media (max-width: 768px) {
   nav { min-height: 68px; padding: 12px 16px; }
