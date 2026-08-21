@@ -117,8 +117,8 @@ function initLoader() {
 
   const sea = loader.querySelector('.loader-sea');
   const depthValue = document.getElementById('loaderDepthValue');
-  const progress = loader.querySelector('.loader-progress');
-  const progressBar = progress ? progress.querySelector('span') : null;
+  const progressTrack = loader.querySelector('.loader-progress');
+  const progressBar = progressTrack ? progressTrack.querySelector('span') : null;
   const duration = 4200;
   const startedAt = performance.now();
   let finished = false;
@@ -130,7 +130,7 @@ function initLoader() {
     if (sea) sea.style.setProperty('--sea-level', `${level}%`);
     if (depthValue) depthValue.textContent = `${level}%`;
     if (progressBar) progressBar.style.width = `${level}%`;
-    if (progress) progress.setAttribute('aria-valuenow', level);
+    if (progressTrack) progressTrack.setAttribute('aria-valuenow', level);
     if (progress < 1 && !finished) window.requestAnimationFrame(updateLevel);
   };
 
