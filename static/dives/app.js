@@ -117,6 +117,8 @@ function initLoader() {
 
   const sea = loader.querySelector('.loader-sea');
   const depthValue = document.getElementById('loaderDepthValue');
+  const progress = loader.querySelector('.loader-progress');
+  const progressBar = progress ? progress.querySelector('span') : null;
   const duration = 4200;
   const startedAt = performance.now();
   let finished = false;
@@ -124,9 +126,11 @@ function initLoader() {
   const updateLevel = (now) => {
     const progress = Math.min(1, (now - startedAt) / duration);
     const eased = 1 - Math.pow(1 - progress, 3);
-    const level = Math.round(eased * 86);
+    const level = Math.round(eased * 100);
     if (sea) sea.style.setProperty('--sea-level', `${level}%`);
     if (depthValue) depthValue.textContent = `${level}%`;
+    if (progressBar) progressBar.style.width = `${level}%`;
+    if (progress) progress.setAttribute('aria-valuenow', level);
     if (progress < 1 && !finished) window.requestAnimationFrame(updateLevel);
   };
 

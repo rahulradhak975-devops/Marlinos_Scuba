@@ -316,6 +316,32 @@ h6 {
     radial-gradient(ellipse at 50% 0%, rgba(148, 168, 184, 0.12), transparent 44%);
 }
 
+.loader-light-shafts {
+  position: absolute;
+  inset: -12% -20%;
+  opacity: 0.7;
+  background:
+    linear-gradient(114deg, transparent 24%, rgba(174, 240, 239, 0.11) 31%, transparent 43%),
+    linear-gradient(76deg, transparent 47%, rgba(89, 210, 224, 0.08) 56%, transparent 68%),
+    linear-gradient(102deg, transparent 61%, rgba(174, 240, 239, 0.06) 69%, transparent 78%);
+  filter: blur(12px);
+  transform-origin: 50% 0;
+  animation: loaderShafts 10s ease-in-out infinite alternate;
+}
+
+.loader-particles {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(circle at 18% 72%, rgba(211, 250, 247, 0.85) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 74% 32%, rgba(0, 214, 194, 0.8) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 42% 58%, rgba(211, 250, 247, 0.7) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 88% 78%, rgba(0, 214, 194, 0.65) 0 1px, transparent 1.5px);
+  background-size: 140px 190px, 190px 260px, 230px 310px, 170px 220px;
+  animation: loaderParticles 12s linear infinite;
+}
+
 .loader-sea {
   --sea-level: 0%;
   position: absolute;
@@ -392,8 +418,11 @@ h6 {
 .loader-logo-wrap,
 .loader-status { position: relative; z-index: 2; }
 .loader-logo-wrap { filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.38)); }
+.loader-copy { position: relative; z-index: 2; display: grid; justify-items: center; gap: 14px; }
 .loader-status { color: var(--accent-cyan, #00c4d6); font-family: 'Sora', sans-serif; letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.7rem; }
 .loader-status span { color: var(--text-body, #94a8b8); }
+.loader-progress { width: min(38vw, 220px); height: 2px; overflow: hidden; background: rgba(168, 216, 232, 0.18); }
+.loader-progress span { display: block; width: 0; height: 100%; background: linear-gradient(90deg, #00d6c2, #a8d8e8); box-shadow: 0 0 12px rgba(0, 214, 194, 0.8); transition: width 0.12s linear; }
 
 #loader::before,
 #loader::after {
@@ -489,9 +518,21 @@ h6 {
   to { transform: translateY(-16%); }
 }
 
+@keyframes loaderShafts {
+  from { transform: translate3d(-2%, -1%, 0) rotate(-2deg) scale(1); }
+  to { transform: translate3d(3%, 4%, 0) rotate(3deg) scale(1.06); }
+}
+
+@keyframes loaderParticles {
+  from { transform: translate3d(0, 8%, 0); }
+  to { transform: translate3d(2%, -8%, 0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .loader-logo-wrap,
   .loader-logo-image,
+  .loader-light-shafts,
+  .loader-particles,
   #loader::before,
   #loader::after { animation: none; }
 }

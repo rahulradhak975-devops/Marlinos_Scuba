@@ -16,12 +16,19 @@
     <div class="loader-depth-scene">
       <div class="loader-depth-glow"></div>
       <div class="loader-sea" aria-hidden="true"></div>
+      <div class="loader-light-shafts" aria-hidden="true"></div>
+      <div class="loader-particles" aria-hidden="true"></div>
       <div class="loader-depth-marker"><span>DEPTH</span><strong id="loaderDepthValue">0%</strong></div>
     </div>
     <div class="loader-logo-wrap">
       <img class="loader-logo-image" src="{% static 'dives/marlinos-loader-logo.png' %}" alt="Marlinos Diventures" />
     </div>
-    <p class="loader-status">Raising the tide <span>of adventure</span></p>
+    <div class="loader-copy">
+      <p class="loader-status">Raising the tide <span>of adventure</span></p>
+      <div class="loader-progress" role="progressbar" aria-label="Loading ocean experience" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <span></span>
+      </div>
+    </div>
   </div>
   {% endif %}
   <canvas id="ocean-canvas" aria-hidden="true"></canvas>
