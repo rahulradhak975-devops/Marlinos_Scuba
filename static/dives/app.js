@@ -128,6 +128,7 @@ function initLoader() {
     const eased = 1 - Math.pow(1 - progress, 3);
     const level = Math.round(eased * 100);
     if (sea) sea.style.setProperty('--sea-level', `${level}%`);
+    loader.style.setProperty('--loader-level', `${level}%`);
     if (depthValue) depthValue.textContent = `${level}%`;
     if (progressBar) progressBar.style.width = `${level}%`;
     if (progressTrack) progressTrack.setAttribute('aria-valuenow', level);
