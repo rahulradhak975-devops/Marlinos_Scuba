@@ -286,8 +286,8 @@ h6 {
   inset: 0;
   z-index: 100100;
   background:
-    radial-gradient(ellipse at 50% 12%, rgba(24, 105, 143, 0.24), transparent 42%),
-    linear-gradient(180deg, #061522 0%, #020a12 72%, #010509 100%);
+    radial-gradient(ellipse at 50% 8%, rgba(0, 196, 214, 0.09), transparent 38%),
+    linear-gradient(180deg, #071520 0%, #07111b 56%, #02070d 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -310,7 +310,10 @@ h6 {
 .loader-depth-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(144, 224, 239, 0.14), transparent 44%);
+  background:
+    linear-gradient(112deg, transparent 18%, rgba(0, 196, 214, 0.05) 36%, transparent 49%),
+    linear-gradient(72deg, transparent 50%, rgba(72, 229, 194, 0.04) 64%, transparent 78%),
+    radial-gradient(ellipse at 50% 0%, rgba(148, 168, 184, 0.12), transparent 44%);
 }
 
 .loader-sea {
@@ -322,9 +325,9 @@ h6 {
   bottom: 0;
   height: auto;
   background:
-    linear-gradient(180deg, rgba(17, 110, 151, 0.42), rgba(0, 65, 105, 0.82) 20%, rgba(0, 24, 47, 0.98) 78%, rgba(0, 7, 15, 1)),
-    radial-gradient(ellipse at 50% 0%, rgba(144, 224, 239, 0.18), transparent 34%);
-  box-shadow: 0 -2px 12px rgba(144, 224, 239, 0.34), 0 -12px 42px rgba(0, 119, 182, 0.14);
+    linear-gradient(180deg, rgba(0, 119, 182, 0.2), rgba(0, 65, 105, 0.58) 22%, rgba(7, 34, 53, 0.9) 78%, rgba(2, 7, 13, 0.98)),
+    radial-gradient(ellipse at 50% 0%, rgba(0, 196, 214, 0.12), transparent 36%);
+  box-shadow: 0 -1px 10px rgba(0, 196, 214, 0.28), 0 -14px 40px rgba(0, 119, 182, 0.1);
   transition: top 0.12s linear;
   overflow: visible;
 }
@@ -332,14 +335,16 @@ h6 {
 .loader-sea::before {
   content: '';
   position: absolute;
-  top: -9px;
+  top: -7px;
   left: 0;
   width: 100%;
-  height: 18px;
-  background: radial-gradient(ellipse at 50% 100%, rgba(144, 224, 239, 0.5) 0 14%, transparent 15% 32%);
-  background-size: 150px 18px;
-  animation: loaderWave 5s linear infinite;
-  opacity: 0.72;
+  height: 14px;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(148, 168, 184, 0.34) 0 13%, transparent 14% 32%),
+    linear-gradient(90deg, transparent, rgba(0, 196, 214, 0.18), transparent);
+  background-size: 180px 14px, 100% 100%;
+  animation: loaderWave 6s linear infinite;
+  opacity: 0.58;
 }
 
 .loader-sea::after {
@@ -349,8 +354,8 @@ h6 {
   left: 0;
   width: 100%;
   height: 1px;
-  background: rgba(210, 248, 255, 0.72);
-  box-shadow: 0 0 10px rgba(144, 224, 239, 0.55);
+  background: rgba(0, 196, 214, 0.68);
+  box-shadow: 0 0 9px rgba(0, 196, 214, 0.42);
 }
 
 .loader-depth-marker {
@@ -359,7 +364,7 @@ h6 {
   top: 14%;
   display: grid;
   gap: 8px;
-  color: rgba(242, 251, 255, 0.86);
+  color: var(--text-muted, #5c7285);
   font-family: 'Sora', sans-serif;
   letter-spacing: 0.18em;
   font-size: 0.65rem;
@@ -374,10 +379,10 @@ h6 {
   top: 50%;
   width: min(32vw, 260px);
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(144, 224, 239, 0.62));
+  background: linear-gradient(90deg, transparent, rgba(0, 196, 214, 0.48));
 }
 
-.loader-depth-marker strong { color: #90e0ef; font-size: clamp(1.4rem, 4vw, 2.4rem); letter-spacing: 0; text-shadow: 0 0 18px rgba(144, 224, 239, 0.28); }
+.loader-depth-marker strong { color: var(--accent-cyan, #00c4d6); font-size: clamp(1.4rem, 4vw, 2.4rem); letter-spacing: 0; text-shadow: 0 0 18px rgba(0, 196, 214, 0.25); }
 
 @keyframes loaderWave {
   from { transform: translateX(0); }
@@ -386,8 +391,9 @@ h6 {
 
 .loader-logo-wrap,
 .loader-status { position: relative; z-index: 2; }
-.loader-status { color: #90e0ef; font-family: 'Sora', sans-serif; letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.7rem; }
-.loader-status span { color: rgba(242, 251, 255, 0.62); }
+.loader-logo-wrap { filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.38)); }
+.loader-status { color: var(--accent-cyan, #00c4d6); font-family: 'Sora', sans-serif; letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.7rem; }
+.loader-status span { color: var(--text-body, #94a8b8); }
 
 #loader::before,
 #loader::after {
@@ -400,18 +406,18 @@ h6 {
 
 #loader::before {
   background:
-    radial-gradient(ellipse at 50% -8%, rgba(234, 255, 255, 0.22), transparent 42%),
-    linear-gradient(108deg, transparent 18%, rgba(216, 255, 255, 0.2) 39%, transparent 52%),
-    linear-gradient(74deg, transparent 48%, rgba(144, 247, 242, 0.16) 58%, transparent 71%);
+    radial-gradient(ellipse at 50% -8%, rgba(148, 168, 184, 0.12), transparent 42%),
+    linear-gradient(108deg, transparent 18%, rgba(0, 196, 214, 0.08) 39%, transparent 52%),
+    linear-gradient(74deg, transparent 48%, rgba(72, 229, 194, 0.05) 58%, transparent 71%);
   mix-blend-mode: screen;
   animation: loaderCaustics 8s ease-in-out infinite alternate;
 }
 
 #loader::after {
   background-image:
-    radial-gradient(circle, rgba(235, 255, 255, 0.72) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(174, 249, 255, 0.58) 0 2px, transparent 3px),
-    radial-gradient(circle, rgba(221, 255, 253, 0.42) 0 1px, transparent 2px);
+    radial-gradient(circle, rgba(148, 168, 184, 0.28) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(0, 196, 214, 0.2) 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(72, 229, 194, 0.16) 0 1px, transparent 2px);
   background-position: 15% 105%, 68% 112%, 86% 102%;
   background-size: 120px 180px, 180px 240px, 90px 150px;
   background-repeat: repeat;
