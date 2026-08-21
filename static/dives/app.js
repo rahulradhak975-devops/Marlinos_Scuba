@@ -111,6 +111,45 @@ function startOceanCanvas() {
   window.requestAnimationFrame(draw);
 }
 
+function initLoader() {
+  const loader = document.getElementById('loader');
+  if (!loader) return;
+
+  const sea = loader.querySelector('.loader-sea');
+  const depthValue = document.getElementById('loaderDepthValue');
+  const duration = 4200;
+  const startedAt = performance.now();
+  let finished = false;
+
+  const updateLevel = (now) => {
+    const progress = Math.min(1, (now - startedAt) / duration);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const level = Math.round(eased * 86);
+    if (sea) sea.style.setProperty('--sea-level', `${level}%`);
+    if (depthValue) depthValue.textContent = `${level}%`;
+    if (progress < 1 && !finished) window.requestAnimationFrame(updateLevel);
+  };
+
+  const finish = () => {
+    if (finished) return;
+    finished = true;
+    window.setTimeout(() => {
+      loader.classList.add('loader-done');
+      window.setTimeout(() => {
+        loader.style.display = 'none';
+        loader.setAttribute('aria-hidden', 'true');
+      }, 700);
+    }, Math.max(0, duration - (performance.now() - startedAt)));
+  };
+
+  window.requestAnimationFrame(updateLevel);
+  if (document.readyState === 'complete') finish();
+  else {
+    window.addEventListener('load', finish, { once: true });
+    window.setTimeout(finish, duration);
+  }
+}
+
 function openWhatsApp(message) {
   const url = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
@@ -943,6 +982,7 @@ window.initLakshadweepMap = function initLakshadweepMap() {
 };
 
 function init() {
+  initLoader();
   startOceanCanvas();
   initHeroVideo();
   initLakshadweepExplorer();

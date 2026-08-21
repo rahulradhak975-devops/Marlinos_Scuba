@@ -8,9 +8,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{% static 'dives/theme.css' %}?v=16" />
+  <link rel="stylesheet" href="{% static 'dives/theme.css' %}?v=17" />
 </head>
 <body>
+  {% if request.path == '/' %}
+  <div id="loader" aria-label="Loading ocean experience">
+    <div class="loader-depth-scene">
+      <div class="loader-depth-glow"></div>
+      <div class="loader-sea" aria-hidden="true"></div>
+      <div class="loader-depth-marker"><span>DEPTH</span><strong id="loaderDepthValue">0%</strong></div>
+    </div>
+    <div class="loader-logo-wrap">
+      <img class="loader-logo-image" src="{% static 'dives/marlinos-loader-logo.png' %}" alt="Marlinos Diventures" />
+    </div>
+    <p class="loader-status">Raising the tide <span>of adventure</span></p>
+  </div>
+  {% endif %}
   <canvas id="ocean-canvas" aria-hidden="true"></canvas>
   <nav id="navbar">
     <a href="{% url 'home' %}" class="nav-logo" aria-label="Marlinos Diventures home">
@@ -76,6 +89,6 @@
     </div>
   </footer>
 
-  <script defer src="{% static 'dives/app.js' %}?v=7"></script>
+  <script defer src="{% static 'dives/app.js' %}?v=8"></script>
 </body>
 </html>
