@@ -74,8 +74,8 @@ COURSES = [
 ]
 
 INSTRUCTORS = [
-    {"name": "Jayakrishnan", "role": "Lead Instructor & Course Director", "bio": "A patient, detail-focused educator who makes every skill feel achievable and every briefing purposeful.", "specialties": "Open Water · Rescue · First Aid", "image_url": "/static/dives/Jayakrishnan.jpg"},
-    {"name": "Salman Ul Fariz", "role": "Dive Master", "bio": "Salman Ul Fariz brings a warm teaching style and a deep knowledge of reef ecology to every island session.", "specialties": "Advanced · Night Diving · Marine Life", "image_url": "/static/dives/Salman.jpg"},
+    {"name": "Jayakrishnan", "role": "Instructor", "bio": "Jayakrishnan creates clear, supportive learning experiences that help every diver build confidence, develop strong skills, and enjoy the water safely.", "specialties": "Open Water · Skill Development · Dive Safety", "image_url": "/static/dives/Jayakrishnan.jpg"},
+    {"name": "Salman Ul Fariz", "role": "Dive Master", "bio": "Salman Ul Fariz leads calm, well-planned dives, supporting every diver with clear briefings, thoughtful guidance, and a strong focus on safety.", "specialties": "Dive Briefings · Safety Support · Reef Tours", "image_url": "/static/dives/Salman.jpg"},
     {"name": "Nikhil Rao", "role": "Technical & Safety Instructor", "bio": "Known for precise planning and calm decision-making, Nikhil helps experienced divers expand their limits responsibly.", "specialties": "Rescue · Deep Diving · Navigation", "image_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85"},
 ]
 
