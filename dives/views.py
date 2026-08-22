@@ -74,7 +74,7 @@ COURSES = [
 ]
 
 INSTRUCTORS = [
-    {"name": "Arjun Menon", "role": "Lead Instructor & Course Director", "bio": "A patient, detail-focused educator who makes every skill feel achievable and every briefing purposeful.", "specialties": "Open Water · Rescue · First Aid", "image_url": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=85"},
+    {"name": "Jayakrishnan", "role": "Lead Instructor & Course Director", "bio": "A patient, detail-focused educator who makes every skill feel achievable and every briefing purposeful.", "specialties": "Open Water · Rescue · First Aid", "image_url": "/static/dives/Jayakrishnan.jpg"},
     {"name": "Maya Thomas", "role": "Marine Educator & Dive Guide", "bio": "Maya brings a warm teaching style and a deep knowledge of reef ecology to every island session.", "specialties": "Advanced · Night Diving · Marine Life", "image_url": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=700&q=85"},
     {"name": "Nikhil Rao", "role": "Technical & Safety Instructor", "bio": "Known for precise planning and calm decision-making, Nikhil helps experienced divers expand their limits responsibly.", "specialties": "Rescue · Deep Diving · Navigation", "image_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85"},
 ]
