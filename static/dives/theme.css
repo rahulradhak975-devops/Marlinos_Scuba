@@ -1210,7 +1210,7 @@ nav.scrolled {
   isolation: isolate;
   background:
     linear-gradient(90deg, rgba(2, 9, 20, 0.9) 0%, rgba(2, 9, 20, 0.62) 48%, rgba(2, 9, 20, 0.82) 100%),
-    url('/static/dives/Lakshadweep2.jpg') center / cover no-repeat;
+    url('/static/dives/background%20image.jpeg') center / cover no-repeat;
   box-shadow: inset 0 0 0 1px rgba(127, 255, 212, 0.12), 0 28px 90px rgba(0, 0, 0, 0.24);
 }
 .profile-hero > * { position: relative; z-index: 1; }
